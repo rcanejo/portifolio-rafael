@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio — Rafael Targino Canêjo
 
-## Getting Started
+Site bilíngue (PT/EN) com Next.js 16, animações premium e CMS Sanity opcional.
 
-First, run the development server:
+**Live:** [portfolio-rafael-eight.vercel.app](https://portfolio-rafael-eight.vercel.app)
+
+## Stack
+
+- Next.js 16 + React 19 + TypeScript + Tailwind CSS 4
+- Motion (animações) + GSAP (scroll timeline)
+- Sanity CMS (`/studio`) — opcional
+- Resend (formulário de contato) — opcional
+- Vercel (hospedagem)
+
+## Desenvolvimento
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) — redireciona para `/pt` ou `/en`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variáveis de ambiente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copie `.env.example` para `.env.local` e preencha:
 
-## Learn More
+| Variável | Obrigatória | Descrição |
+|----------|-------------|-----------|
+| `NEXT_PUBLIC_SITE_URL` | Recomendada | URL do site (SEO/sitemap) |
+| `CONTACT_EMAIL` | Recomendada | E-mail que recebe contatos |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Recomendada | Número com DDI (ex: 5511999999999) |
+| `RESEND_API_KEY` | Opcional | Sem isso, formulário abre mailto |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Opcional | Sem isso, usa `src/content/data.ts` |
 
-To learn more about Next.js, take a look at the following resources:
+## Estrutura
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/app/[lang]/` — páginas PT/EN
+- `src/components/sections/` — seções do site
+- `src/components/motion/` — animações (Reveal, HeroGraph, etc.)
+- `src/content/data.ts` — conteúdo estático (placeholders)
+- `design-concepts/v2/` — referência visual aprovada
+- `sanity/` — schemas do CMS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Conteúdo
 
-## Deploy on Vercel
+Edite `src/content/data.ts` ou configure Sanity em `/studio`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Placeholders estão marcados — substitua com projetos, certificados e links reais.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Domínio próprio (Cloudflare)
+
+1. Registre o domínio na [Cloudflare Registrar](https://www.cloudflare.com/products/registrar/) (~R$40–80/ano)
+2. Sugestões: `rafaelcanejo.dev`, `rafaeltargino.dev`, `rafaelcanejo.com.br`
+3. Na Vercel: Project → Settings → Domains → adicione o domínio
+4. Na Cloudflare DNS: CNAME `@` → `cname.vercel-dns.com` (ou registros que a Vercel indicar)
+5. Atualize `NEXT_PUBLIC_SITE_URL` na Vercel
+
+## Deploy
+
+Push na branch `main` dispara deploy automático na Vercel.
+
+```bash
+npm run build
+npm run lint
+git push origin main
+```
+
+## Currículo
+
+- `/pt/cv` e `/en/cv` — versão visual premium
+- Botão "Baixar / Imprimir PDF" usa `window.print()` (Salvar como PDF)

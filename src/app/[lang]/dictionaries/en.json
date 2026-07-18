@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "certificates": "Education",
+    "contact": "Contact",
+    "cv": "Resume",
+    "whatsapp": "WhatsApp"
+  },
+  "hero": {
+    "label": "AUTOMATIONS · AI · NOCODE",
+    "name": "Rafael Canêjo",
+    "subtitle": "I build flows that automate processes and deliver results — from WhatsApp to back-office.",
+    "cta": "View projects"
+  },
+  "about": {
+    "label": "01 — ABOUT",
+    "title": "Automation applied to the real world",
+    "p1": "I'm a NoCode/LowCode developer and official ibe.IA platform member, focused on smart automations that connect support, internal processes, and AI tools.",
+    "p2": "I work with n8n, Make, Cursor, and WhatsApp integrations to turn manual routines into reliable flows — always with clarity, performance, and measurable outcomes.",
+    "ibeHighlight": "ibe.IA"
+  },
+  "services": {
+    "label": "02 — SERVICES",
+    "title": "What I can build for you"
+  },
+  "projects": {
+    "label": "03 — PROJECTS",
+    "title": "Selected work",
+    "viewAll": "View details"
+  },
+  "certificates": {
+    "label": "04 — EDUCATION",
+    "title": "Courses & certifications"
+  },
+  "contact": {
+    "label": "05 — CONTACT",
+    "title": "Let's automate something?",
+    "subtitle": "Tell me your challenge — I'll reply within 24h with next steps.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Message sent! Thank you for reaching out.",
+    "error": "Could not send. Please try again or use WhatsApp.",
+    "formSoon": "Full form coming soon — for now, we open your email client.",
+    "downloadCv": "Download resume"
+  },
+  "footer": {
+    "rights": "© 2026 Rafael Canêjo. All rights reserved."
+  },
+  "cv": {
+    "title": "Resume",
+    "subtitle": "NoCode/LowCode Developer · AI Automations",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "download": "Download PDF",
+    "print": "Print"
+  }
+}

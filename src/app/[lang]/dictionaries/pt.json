@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "services": "Serviços",
+    "projects": "Projetos",
+    "certificates": "Formação",
+    "contact": "Contato",
+    "cv": "Currículo",
+    "whatsapp": "WhatsApp"
+  },
+  "hero": {
+    "label": "AUTOMAÇÕES · IA · NOCODE",
+    "name": "Rafael Canêjo",
+    "subtitle": "Construo fluxos que automatizam processos e geram resultados — do WhatsApp ao back-office.",
+    "cta": "Ver projetos"
+  },
+  "about": {
+    "label": "01 — SOBRE",
+    "title": "Automação aplicada ao mundo real",
+    "p1": "Sou desenvolvedor NoCode/LowCode e assinante oficial da plataforma ibe.IA, com foco em automações inteligentes que conectam atendimento, processos internos e ferramentas de IA.",
+    "p2": "Trabalho com n8n, Make, Cursor e integrações WhatsApp para transformar rotinas manuais em fluxos confiáveis — sempre com clareza, performance e resultado mensurável.",
+    "ibeHighlight": "ibe.IA"
+  },
+  "services": {
+    "label": "02 — SERVIÇOS",
+    "title": "O que posso construir para você"
+  },
+  "projects": {
+    "label": "03 — PROJETOS",
+    "title": "Trabalhos selecionados",
+    "viewAll": "Ver detalhes"
+  },
+  "certificates": {
+    "label": "04 — FORMAÇÃO",
+    "title": "Cursos e certificações"
+  },
+  "contact": {
+    "label": "05 — CONTATO",
+    "title": "Vamos automatizar algo?",
+    "subtitle": "Conte seu desafio — respondo em até 24h com os próximos passos.",
+    "name": "Nome",
+    "email": "E-mail",
+    "message": "Mensagem",
+    "send": "Enviar mensagem",
+    "sending": "Enviando…",
+    "success": "Mensagem enviada! Obrigado pelo contato.",
+    "error": "Não foi possível enviar. Tente novamente ou use o WhatsApp.",
+    "formSoon": "Formulário completo em breve — por enquanto, abrimos seu e-mail.",
+    "downloadCv": "Baixar currículo"
+  },
+  "footer": {
+    "rights": "© 2026 Rafael Canêjo. Todos os direitos reservados."
+  },
+  "cv": {
+    "title": "Currículo",
+    "subtitle": "Desenvolvedor NoCode/LowCode · Automações com IA",
+    "experience": "Experiência",
+    "education": "Formação",
+    "skills": "Competências",
+    "download": "Baixar PDF",
+    "print": "Imprimir"
+  }
+}
