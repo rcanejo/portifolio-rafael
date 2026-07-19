@@ -33,7 +33,7 @@ export const cardHoverMotion = {
     stiffness: 42,
 
     /** Amortecimento — menor = mais bounce. Faixa típica: 8–18 */
-    damping: 10,
+    damping: 7,
 
     /** Massa — maior = mais inércia/lentidão. Faixa típica: 0.4–1 */
     mass: 0.55,
