@@ -1,0 +1,13 @@
+---
+description: Nunca commitar ou dar push — o usuário revisa e publica manualmente
+alwaysApply: true
+---
+
+# Git — fluxo manual do usuário
+
+- Edite arquivos normalmente; o usuário revisa na aba **Source Control** e faz **commit + push manualmente**.
+- **Nunca** execute `git add`, `git commit`, `git push`, `git commit --amend`, force push ou qualquer operação que publique ou altere o histórico remoto.
+- **Nunca** proponha ou execute commit/push de forma proativa, mesmo após concluir uma tarefa grande.
+- Só faça commit ou push se o usuário pedir **explicitamente na mensagem atual** (ex.: "faça o commit", "pode dar push").
+- Pode usar comandos **somente leitura** para ajudar: `git status`, `git diff`, `git log`.
+- Ao terminar alterações, informe o que mudou e lembre que os arquivos estão prontos para revisão na Source Control.
