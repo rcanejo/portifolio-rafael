@@ -1,3 +1,4 @@
+import { HoverCard } from "@/components/motion/HoverCard";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/motion/Reveal";
 import type { Dictionary, Locale, Service } from "@/content/types";
 import { localize } from "@/lib/content";
@@ -22,7 +23,7 @@ function ServiceIcon({ icon }: { icon: string }) {
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="text-emerald"
+      className="text-emerald transition-transform duration-500 group-hover:scale-110"
       aria-hidden
     >
       <path d={paths[icon] ?? paths.workflow} />
@@ -54,15 +55,17 @@ export function Services({ lang, dict, services }: ServicesProps) {
         <StaggerReveal className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (
             <StaggerItem key={service.title.pt}>
-              <article className="group h-full rounded-lg border border-line bg-panel p-6 transition duration-200 hover:-translate-y-1 hover:border-emerald">
-                <ServiceIcon icon={service.icon} />
-                <h3 className="font-display mt-4 text-lg font-semibold">
-                  {localize(service.title, lang)}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">
-                  {localize(service.description, lang)}
-                </p>
-              </article>
+              <HoverCard>
+                <article className="group h-full rounded-lg border border-line bg-panel p-6 transition-[border-color,box-shadow] duration-500 hover:border-emerald hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+                  <ServiceIcon icon={service.icon} />
+                  <h3 className="font-display mt-4 text-lg font-semibold transition-colors duration-500 group-hover:text-emerald">
+                    {localize(service.title, lang)}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted transition-colors duration-500 group-hover:text-fg/80">
+                    {localize(service.description, lang)}
+                  </p>
+                </article>
+              </HoverCard>
             </StaggerItem>
           ))}
         </StaggerReveal>

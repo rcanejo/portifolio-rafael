@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 
 function canUseCursorGlow() {
-  if (typeof window === "undefined") return false;
   return (
     !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
     !window.matchMedia("(pointer: coarse)").matches
@@ -12,7 +11,7 @@ function canUseCursorGlow() {
 
 export function CursorGlow() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
-  const enabled = canUseCursorGlow();
+  const [enabled] = useState(canUseCursorGlow);
 
   useEffect(() => {
     if (!enabled) return;

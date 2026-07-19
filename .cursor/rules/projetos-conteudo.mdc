@@ -1,0 +1,46 @@
+---
+description: Padrão de conteúdo e documentação dos projetos de IA/automação no portfólio
+alwaysApply: true
+---
+
+# Padrão de Projetos (Case Study) — Portfólio Rafael
+
+Quando o usuário descrever um projeto ponto a ponto, adicionar em `src/content/data.ts`
+(tipos em `src/content/types.ts`) seguindo o modelo-ouro **Mirra & Maison**
+(`slug: mirra-maison-atendimento-ia`). SEMPRE em PT **e** EN (`Localized`).
+
+## Fluxo ao receber um projeto novo
+1. Antes de escrever, **listar ao usuário** os campos que serão preenchidos e o que já
+   está assumido como baseline (abaixo) vs. o que é específico dele. Confirmar lacunas.
+2. Preencher todos os campos aplicáveis do `Project`: `challenge`, `solution`,
+   `humanized`, `capabilities`, `stack` (agrupado por categoria), `results`, `flow`,
+   `role`, `duration`, `year`, `client`, `tags`, `image`.
+3. Não inventar métricas/resultados numéricos que o usuário não forneceu.
+
+## Baseline de qualidade de IA (assumir por padrão)
+Todo agente de atendimento com IA que o Rafael constrói tem, salvo indicação contrária,
+o MESMO patamar de comportamento do Mirra & Maison. Não perguntar item a item — assumir e
+confirmar só o que for diferente:
+
+- **Comportamento humanizado**: confirmação de leitura (check azul), indicador "digitando…",
+  "gravando áudio" quando responde em voz, envio de mídia (imagem/documento) quando faz
+  sentido, agrupamento de várias mensagens (texto+áudio+imagem) num único bloco de contexto,
+  tom adaptável por engenharia de prompt (nunca roteiro fixo de robô).
+- **Capacidades**: memória isolada por conversa (dezenas simultâneas sem misturar),
+  base de conhecimento vetorizada + busca web complementar, entende texto/áudio/imagem/
+  vídeo/documento, escalonamento a humano por regras de negócio (não por palavra-chave fixa).
+- **Engenharia/infra típica**: n8n orquestrando, infra própria (Hetzner + Docker/Swarm +
+  Portainer + Traefik), OpenAI (chat/transcrição/visão/embeddings), dados em Postgres +
+  Supabase/pgvector + Redis, WhatsApp via ZAPI.
+
+O que É específico por projeto (sempre perguntar/confirmar): roteamento de distribuidores,
+regras de alerta ao humano, base de conhecimento do nicho, integrações extras, metas de
+negócio e resultados.
+
+## Regras de escrita
+- `summary`: 1 frase de impacto para o card. `description`: 1–2 frases para a página.
+- `challenge`/`solution`: narrativa real, foco no problema de negócio e na solução técnica.
+- `results`: benefícios concretos e verificáveis; sem número inventado.
+- `flow`: etapas com `kind` correto (`io | process | core | data | tool`).
+- Placeholders (projetos ainda não detalhados) ficam com dados mínimos e são substituídos
+  quando o usuário narrar o projeto.
