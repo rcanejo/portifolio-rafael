@@ -59,5 +59,20 @@
     "skills": "Skills",
     "download": "Download PDF",
     "print": "Print"
+  },
+  "projectDetail": {
+    "back": "Back to projects",
+    "role": "Role",
+    "duration": "Duration",
+    "year": "Year",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "architecture": "Architecture",
+    "architectureHint": "End-to-end support flow",
+    "humanized": "Human-like experience",
+    "capabilities": "Capabilities & integrations",
+    "stack": "Tech stack",
+    "results": "Outcomes",
+    "cta": "I want something like this"
   }
 }

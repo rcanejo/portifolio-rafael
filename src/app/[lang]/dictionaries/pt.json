@@ -59,5 +59,20 @@
     "skills": "Competências",
     "download": "Baixar PDF",
     "print": "Imprimir"
+  },
+  "projectDetail": {
+    "back": "Voltar aos projetos",
+    "role": "Atuação",
+    "duration": "Duração",
+    "year": "Ano",
+    "challenge": "Desafio",
+    "solution": "Solução",
+    "architecture": "Arquitetura",
+    "architectureHint": "Fluxo de ponta a ponta do atendimento",
+    "humanized": "Atendimento humanizado",
+    "capabilities": "Capacidades e integrações",
+    "stack": "Tecnologias",
+    "results": "Resultados",
+    "cta": "Quero algo assim"
   }
 }

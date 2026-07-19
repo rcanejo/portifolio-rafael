@@ -2,6 +2,25 @@ export type Locale = "pt" | "en";
 
 export type Localized = Record<Locale, string>;
 
+export interface CaseFeature {
+  icon: string;
+  title: Localized;
+  description: Localized;
+}
+
+export interface StackGroup {
+  category: Localized;
+  items: string[];
+}
+
+export type FlowKind = "io" | "process" | "core" | "data" | "tool";
+
+export interface FlowStage {
+  id: string;
+  label: Localized;
+  kind: FlowKind;
+}
+
 export interface Project {
   slug: string;
   title: Localized;
@@ -10,6 +29,17 @@ export interface Project {
   tags: string[];
   image?: string;
   featured: boolean;
+  client?: { name: string; logo?: string };
+  role?: Localized;
+  duration?: Localized;
+  year?: number;
+  challenge?: Localized;
+  solution?: Localized;
+  humanized?: CaseFeature[];
+  capabilities?: CaseFeature[];
+  stack?: StackGroup[];
+  results?: Localized[];
+  flow?: FlowStage[];
 }
 
 export interface Certificate {
@@ -93,5 +123,20 @@ export interface Dictionary {
     skills: string;
     download: string;
     print: string;
+  };
+  projectDetail: {
+    back: string;
+    role: string;
+    duration: string;
+    year: string;
+    challenge: string;
+    solution: string;
+    architecture: string;
+    architectureHint: string;
+    humanized: string;
+    capabilities: string;
+    stack: string;
+    results: string;
+    cta: string;
   };
 }

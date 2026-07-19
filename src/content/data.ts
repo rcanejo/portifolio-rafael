@@ -1,24 +1,218 @@
 import type { Certificate, Project, Service, Stat } from "./types";
 
-// PLACEHOLDER — substituir na Fase 6 com conteúdo real de Rafael
-
 export const projects: Project[] = [
   {
-    slug: "atendimento-whatsapp-ia",
+    slug: "mirra-maison-atendimento-ia",
     title: {
-      pt: "Atendimento WhatsApp com IA",
-      en: "AI-Powered WhatsApp Support",
+      pt: "Atendimento IA no WhatsApp — Mirra & Maison",
+      en: "AI WhatsApp Support — Mirra & Maison",
     },
     summary: {
-      pt: "Agente de atendimento multiplataforma com triagem automática e handoff humano.",
-      en: "Multi-platform support agent with automatic triage and human handoff.",
+      pt: "Agente humanizado que ouve áudio, lê imagens e responde no WhatsApp como uma pessoa real — construído do zero em 2 meses.",
+      en: "Human-like agent that listens to audio, reads images, and replies on WhatsApp like a real person — built from scratch in 2 months.",
     },
     description: {
-      pt: "Fluxo completo de atendimento no WhatsApp integrado a CRM, com respostas contextuais via IA e escalonamento inteligente para operadores.",
-      en: "Full WhatsApp support flow integrated with CRM, contextual AI replies, and smart escalation to human operators.",
+      pt: "Sistema completo de atendimento profissional no WhatsApp para a Mirra & Maison: recebe texto, áudio, imagem, vídeo e documentos, com memória por conversa, base de conhecimento vetorizada e roteamento inteligente de distribuidores.",
+      en: "Full professional WhatsApp support system for Mirra & Maison: handles text, audio, images, video, and documents, with per-conversation memory, vector knowledge base, and smart distributor routing.",
     },
-    tags: ["n8n", "WhatsApp API", "IA", "CRM"],
+    tags: ["n8n", "WhatsApp", "IA", "Supabase", "Redis"],
+    image: "/projects/mirra-maison.png",
     featured: true,
+    client: { name: "Mirra & Maison", logo: "/projects/mirra-maison.png" },
+    role: {
+      pt: "Desenvolvimento 100% do zero",
+      en: "Built 100% from scratch",
+    },
+    duration: { pt: "2 meses", en: "2 months" },
+    year: 2025,
+    challenge: {
+      pt: "A Mirra & Maison precisava escalar o atendimento no WhatsApp sem perder a qualidade humana: múltiplos clientes simultâneos, mensagens em vários formatos (texto, áudio, imagem, vídeo, documento) e respostas que dependem de conhecimento técnico sobre cosméticos e da rede nacional de distribuidores.",
+      en: "Mirra & Maison needed to scale WhatsApp support without losing human quality: multiple simultaneous customers, messages in many formats (text, audio, image, video, document), and answers that depend on technical cosmetics knowledge and a national distributor network.",
+    },
+    solution: {
+      pt: "Construí um agente de IA orquestrado no n8n, hospedado em infraestrutura própria (Hetzner + Docker), integrado ao WhatsApp via ZAPI. O sistema agrupa mensagens em blocos de contexto, processa áudio e imagem com OpenAI, consulta uma base vetorizada no Supabase e aciona tools para alertar humanos ou encaminhar leads a distribuidores regionais — tudo com comportamento humanizado na conversa.",
+      en: "I built an AI agent orchestrated in n8n, hosted on dedicated infrastructure (Hetzner + Docker), integrated with WhatsApp via ZAPI. The system groups messages into context blocks, processes audio and images with OpenAI, queries a vector base in Supabase, and triggers tools to alert humans or route leads to regional distributors — all with humanized conversation behavior.",
+    },
+    humanized: [
+      {
+        icon: "check",
+        title: { pt: "Confirmação de leitura", en: "Read receipts" },
+        description: {
+          pt: "Marca mensagens como visualizadas (check azul) antes de responder, como em uma conversa real.",
+          en: "Marks messages as read (blue check) before replying, like a real conversation.",
+        },
+      },
+      {
+        icon: "typing",
+        title: { pt: '"Digitando…"', en: '"Typing…"' },
+        description: {
+          pt: "Exibe o indicador de digitação enquanto a IA prepara a resposta em texto.",
+          en: "Shows the typing indicator while the AI prepares a text reply.",
+        },
+      },
+      {
+        icon: "mic",
+        title: { pt: "Gravando áudio", en: "Recording audio" },
+        description: {
+          pt: 'Mostra "gravando áudio" quando a resposta será enviada em voz, mantendo naturalidade.',
+          en: 'Shows "recording audio" when the reply will be sent as voice, keeping things natural.',
+        },
+      },
+      {
+        icon: "image",
+        title: { pt: "Mídia na resposta", en: "Media in replies" },
+        description: {
+          pt: "A IA pode enviar imagens e documentos quando faz sentido no atendimento.",
+          en: "The AI can send images and documents when it makes sense in the conversation.",
+        },
+      },
+      {
+        icon: "layers",
+        title: { pt: "Bloco de contexto único", en: "Single context block" },
+        description: {
+          pt: "Várias mensagens seguidas (texto + áudio + imagem) são agrupadas e interpretadas como um único contexto.",
+          en: "Multiple consecutive messages (text + audio + image) are grouped and interpreted as one context.",
+        },
+      },
+      {
+        icon: "spark",
+        title: { pt: "Tom adaptável", en: "Adaptable tone" },
+        description: {
+          pt: "Engenharia de prompt aplicada a situações reais — respostas dinâmicas, não roteiros fixos de robô.",
+          en: "Prompt engineering applied to real situations — dynamic replies, not fixed robot scripts.",
+        },
+      },
+    ],
+    capabilities: [
+      {
+        icon: "memory",
+        title: { pt: "Memória por conversa", en: "Per-conversation memory" },
+        description: {
+          pt: "Cada atendimento mantém contexto isolado via Redis, permitindo dezenas de conversas simultâneas sem misturar informações.",
+          en: "Each session keeps isolated context via Redis, enabling dozens of simultaneous conversations without mixing information.",
+        },
+      },
+      {
+        icon: "search",
+        title: { pt: "Base vetorizada + web", en: "Vector KB + web search" },
+        description: {
+          pt: "Busca em base de conhecimento específica da empresa (cosméticos) no Supabase com embeddings OpenAI, complementada por pesquisas externas quando necessário.",
+          en: "Searches company-specific knowledge (cosmetics) in Supabase with OpenAI embeddings, complemented by external research when needed.",
+        },
+      },
+      {
+        icon: "bell",
+        title: { pt: "Alerta humano", en: "Human alert" },
+        description: {
+          pt: "Aciona o time de suporte em casos definidos por regras pré-estabelecidas, sem depender de palavras-chave fixas.",
+          en: "Notifies the support team in cases defined by pre-established rules, without relying on fixed keywords.",
+        },
+      },
+      {
+        icon: "map",
+        title: { pt: "Roteamento de distribuidor", en: "Distributor routing" },
+        description: {
+          pt: "Identifica a região do cliente pelo contexto, busca o distribuidor correto na base nacional e alerta o representante sobre o lead.",
+          en: "Identifies the customer's region from context, finds the right distributor in the national database, and alerts the representative about the lead.",
+        },
+      },
+    ],
+    stack: [
+      {
+        category: { pt: "Infraestrutura", en: "Infrastructure" },
+        items: ["Hetzner", "Docker", "Swarm", "Portainer", "Traefik"],
+      },
+      {
+        category: { pt: "Automação", en: "Automation" },
+        items: ["n8n"],
+      },
+      {
+        category: { pt: "Inteligência Artificial", en: "Artificial Intelligence" },
+        items: ["OpenAI (chat, transcrição, visão, embeddings)"],
+      },
+      {
+        category: { pt: "APIs & Integrações", en: "APIs & Integrations" },
+        items: ["ZAPI (WhatsApp)", "HTTP Requests"],
+      },
+      {
+        category: { pt: "Dados", en: "Data" },
+        items: ["Postgres", "Supabase (pgvector)", "Redis"],
+      },
+    ],
+    results: [
+      {
+        pt: "Atendimento profissional no WhatsApp disponível continuamente, com respostas contextuais em múltiplos formatos.",
+        en: "Professional WhatsApp support available continuously, with contextual replies across multiple formats.",
+      },
+      {
+        pt: "Conversas simultâneas isoladas por memória, sem perder o fio de cada cliente.",
+        en: "Simultaneous conversations isolated by memory, without losing each customer's thread.",
+      },
+      {
+        pt: "Encaminhamento automático de leads qualificados ao distribuidor regional correto.",
+        en: "Automatic routing of qualified leads to the correct regional distributor.",
+      },
+      {
+        pt: "Escalonamento para humanos apenas quando as regras de negócio exigem — o restante fica com a IA.",
+        en: "Escalation to humans only when business rules require it — everything else stays with the AI.",
+      },
+    ],
+    flow: [
+      {
+        id: "cliente",
+        label: { pt: "Cliente (WhatsApp)", en: "Customer (WhatsApp)" },
+        kind: "io",
+      },
+      {
+        id: "zapi",
+        label: { pt: "ZAPI / Webhook", en: "ZAPI / Webhook" },
+        kind: "io",
+      },
+      {
+        id: "buffer",
+        label: { pt: "Buffer (Redis)", en: "Buffer (Redis)" },
+        kind: "process",
+      },
+      {
+        id: "pre",
+        label: {
+          pt: "Transcrição + Visão (OpenAI)",
+          en: "Transcription + Vision (OpenAI)",
+        },
+        kind: "process",
+      },
+      {
+        id: "agente",
+        label: { pt: "Agente IA", en: "AI Agent" },
+        kind: "core",
+      },
+      {
+        id: "memoria",
+        label: { pt: "Memória por conversa", en: "Per-conversation memory" },
+        kind: "data",
+      },
+      {
+        id: "kb",
+        label: {
+          pt: "Base vetorizada (Supabase)",
+          en: "Vector KB (Supabase)",
+        },
+        kind: "data",
+      },
+      {
+        id: "tools",
+        label: {
+          pt: "Tools: distribuidor / alerta",
+          en: "Tools: distributor / alert",
+        },
+        kind: "tool",
+      },
+      {
+        id: "resposta",
+        label: { pt: "Resposta humanizada", en: "Humanized reply" },
+        kind: "io",
+      },
+    ],
   },
   {
     slug: "automacao-processos-internos",
