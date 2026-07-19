@@ -1,5 +1,5 @@
 ---
-description: Padrão de conteúdo e documentação dos projetos de IA/automação no portfólio
+description: Padrão de conteúdo, escopo de planos e documentação dos projetos de IA/automação no portfólio
 alwaysApply: true
 ---
 
@@ -9,13 +9,71 @@ Quando o usuário descrever um projeto ponto a ponto, adicionar em `src/content/
 (tipos em `src/content/types.ts`) seguindo o modelo-ouro **Mirra & Maison**
 (`slug: mirra-maison-atendimento-ia`). SEMPRE em PT **e** EN (`Localized`).
 
+Referência visual da página: [`src/app/[lang]/projetos/[slug]/page.tsx`](src/app/[lang]/projetos/[slug]/page.tsx)
+— seções já existentes, **sem criar novas**.
+
+---
+
+## Escopo padrão (seguir quase sempre)
+
+### O que FAZ parte do escopo
+1. **Conteúdo tipado** em `src/content/data.ts` — único artefato principal.
+2. **Assets mínimos** em `public/projects/<slug>/`:
+   - `image` (thumb do card na home)
+   - `client.logo` (logo no header da página do projeto)
+   - Mesmo arquivo pode servir para ambos (padrão Mirra).
+3. **Diagrama de fluxo** via campo `flow` — usa o componente existente
+   [`ProjectFlow.tsx`](src/components/motion/ProjectFlow.tsx) e os **ids já mapeados**
+   em `POSITIONS`/`EDGES` (ex.: `cliente`, `zapi`, `buffer`, `pre`, `agente`, `memoria`,
+   `notion`, `sync`, `kb`, `tools`, `resposta`). Só mudam os **labels** e o `kind`.
+4. **Ícones existentes** em [`CaseIcon.tsx`](src/components/sections/case/CaseIcon.tsx)
+   (`check`, `typing`, `mic`, `image`, `layers`, `spark`, `memory`, `search`, `refresh`,
+   `bell`, `map`). Reutilizar antes de criar ícone novo.
+5. **Lint + build** limpos ao concluir.
+
+### O que NÃO faz parte do escopo (salvo pedido explícito do usuário)
+- Novos tipos/campos em `types.ts` (ex.: `gallery`, `flowLayout`, seções extras).
+- Novos componentes de UI (galeria, lightbox de projeto, tabs, carrossel de prints).
+- Refatorar `ProjectFlow` (layouts alternativos, viewBox novo, posições por projeto).
+- Alterar dicionários (`pt.json`/`en.json`) só para suportar feature nova.
+- Mockups/imagens gerados para ilustrar CRM — sem componente de galeria, **não entram na UI**.
+- Métricas, percentuais ou números de resultado **inventados**.
+
+**Regra de ouro:** se a complexidade do projeto (multiagente, várias integrações) não cabe
+num nó do diagrama, ela vai para **`capabilities`** e **`solution`** — não vira feature de código.
+
+---
+
 ## Fluxo ao receber um projeto novo
-1. Antes de escrever, **listar ao usuário** os campos que serão preenchidos e o que já
-   está assumido como baseline (abaixo) vs. o que é específico dele. Confirmar lacunas.
-2. Preencher todos os campos aplicáveis do `Project`: `challenge`, `solution`,
-   `humanized`, `capabilities`, `stack` (agrupado por categoria), `results`, `flow`,
-   `role`, `duration`, `year`, `client`, `tags`, `image`.
-3. Não inventar métricas/resultados numéricos que o usuário não forneceu.
+
+### 1. Antes de escrever ou planejar execução
+- **Listar ao usuário** os campos que serão preenchidos.
+- Separar **baseline assumido** (comportamento humanizado, infra típica) vs **específico**
+  do cliente (integrações, regras de negócio, multiagente, CRM, etc.).
+- Confirmar lacunas: `duration`, `year`, `role` exato, privacidade de prints/dados reais.
+- Se o plano incluir código além de `data.ts` + assets, **justificar** e pedir confirmação.
+
+### 2. Preencher todos os campos aplicáveis do `Project`
+| Campo | Uso |
+|-------|-----|
+| `slug`, `title`, `summary`, `description` | Identidade e card |
+| `tags`, `featured`, `image` | Listagem na home |
+| `client`, `role`, `duration`, `year` | Meta do case |
+| `challenge`, `solution` | Narrativa negócio + técnica |
+| `humanized` | 6 itens baseline (adaptar texto ao nicho) |
+| `capabilities` | Diferenciais **específicos** deste projeto |
+| `stack` | Agrupado por categoria (PT/EN) |
+| `results` | Benefícios verificáveis, sem número inventado |
+| `flow` | Arquitetura com ids compatíveis com `ProjectFlow` |
+
+### 3. Privacidade e dados sensíveis (obrigatório em projetos reais)
+- **Nunca** publicar prints com nomes de clientes, telefones, casos jurídicos reais ou
+  conversas identificáveis.
+- Escritórios/advocacia: tratar com cuidado extra — preferir logo + texto; mockups só se
+  o usuário pedir **e** houver componente para exibir (hoje não há).
+- No copy do case: usar termos genéricos quando necessário (“cliente”, “empresa X”).
+
+---
 
 ## Baseline de qualidade de IA (assumir por padrão)
 Todo agente de atendimento com IA que o Rafael constrói tem, salvo indicação contrária,
@@ -26,21 +84,66 @@ confirmar só o que for diferente:
   "gravando áudio" quando responde em voz, envio de mídia (imagem/documento) quando faz
   sentido, agrupamento de várias mensagens (texto+áudio+imagem) num único bloco de contexto,
   tom adaptável por engenharia de prompt (nunca roteiro fixo de robô).
-- **Capacidades**: memória isolada por conversa (dezenas simultâneas sem misturar),
-  base de conhecimento vetorizada + busca web complementar, entende texto/áudio/imagem/
-  vídeo/documento, escalonamento a humano por regras de negócio (não por palavra-chave fixa).
+- **Capacidades base**: memória isolada por conversa (dezenas simultâneas sem misturar),
+  entende texto/áudio/imagem/vídeo/documento, escalonamento a humano por regras de negócio
+  (não por palavra-chave fixa).
 - **Engenharia/infra típica**: n8n orquestrando, infra própria (Hetzner + Docker/Swarm +
-  Portainer + Traefik), OpenAI (chat/transcrição/visão/embeddings), dados em Postgres +
-  Supabase/pgvector + Redis, WhatsApp via ZAPI.
+  Portainer + Traefik), OpenAI (chat/transcrição/visão/embeddings), Postgres + Redis.
+  WhatsApp via ZAPI **ou** API oficial + CRM — conforme o projeto.
 
-O que É específico por projeto (sempre perguntar/confirmar): roteamento de distribuidores,
-regras de alerta ao humano, base de conhecimento do nicho, integrações extras, metas de
-negócio e resultados.
+O que É **sempre específico** por projeto: CRM/canal (Chatwoot, ZAPI…), multiagente,
+prompts dinâmicos, tools (etiquetas, notas, roteamento humano), base de conhecimento do
+nicho, integrações extras (Drive, ZapSign, Sheets…), metas de negócio e resultados.
+
+---
 
 ## Regras de escrita
-- `summary`: 1 frase de impacto para o card. `description`: 1–2 frases para a página.
-- `challenge`/`solution`: narrativa real, foco no problema de negócio e na solução técnica.
-- `results`: benefícios concretos e verificáveis; sem número inventado.
-- `flow`: etapas com `kind` correto (`io | process | core | data | tool`).
-- Placeholders (projetos ainda não detalhados) ficam com dados mínimos e são substituídos
-  quando o usuário narrar o projeto.
+- `summary`: 1 frase de impacto para o card.
+- `description`: 1–2 frases para fallback quando não houver challenge/solution.
+- `challenge`/`solution`: narrativa real; foco no problema de negócio e na solução técnica.
+- `capabilities`: 5–8 itens; cada tool/integração relevante vira um card com ícone existente.
+- `results`: 4–6 bullets; benefícios concretos; **zero número inventado**.
+- `flow`: 9–11 estágios; `kind` correto (`io | process | core | data | tool`).
+- Placeholders (projetos ainda não detalhados) ficam com dados mínimos até o usuário narrar.
+
+---
+
+## Template de plano (usar ao planejar um projeto novo)
+
+```markdown
+# Projeto [Nome] — Case Study
+
+## Escopo
+- [ ] Apenas `data.ts` + assets (`image`, `client.logo`)
+- [ ] Sem novos componentes / tipos / dicionários
+
+## Decisões confirmadas
+- Cliente identificado ou anonimizado?
+- Prints/dados sensíveis: como tratar?
+
+## Conteúdo (rascunho dos campos)
+- slug, title, summary, description, tags, role, duration, year
+- challenge / solution (narrativa)
+- humanized (baseline adaptada)
+- capabilities (específicas deste projeto)
+- stack (agrupado)
+- results (qualitativos)
+- flow (ids compatíveis com ProjectFlow)
+
+## Assets
+- Logo/thumb em `public/projects/<slug>/`
+
+## Verificação
+- lint + build
+- revisão de privacidade no copy
+```
+
+---
+
+## Quando ampliar o escopo (exceções)
+Só incluir no plano **features de código novas** se o usuário pedir explicitamente, por exemplo:
+- “quero galeria de prints na página do projeto”
+- “quero diagrama diferente para cada projeto”
+- “quero seção de equipe/parceiro”
+
+Nesses casos, tratar como **fase 2 separada**, depois do case study base estar no ar.

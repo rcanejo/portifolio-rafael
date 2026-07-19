@@ -2,6 +2,340 @@ import type { Certificate, Project, Service, Stat } from "./types";
 
 export const projects: Project[] = [
   {
+    slug: "cohn-santos-atendimento-juridico-ia",
+    title: {
+      pt: "Atendimento jurídico com IA — Cohn & Santos",
+      en: "AI Legal Support — Cohn & Santos",
+    },
+    summary: {
+      pt: "Dois agentes de IA no WhatsApp oficial + CRM: triagem por área, qualificação e handoff humano com contexto completo.",
+      en: "Two AI agents on official WhatsApp + CRM: area triage, qualification, and human handoff with full context.",
+    },
+    description: {
+      pt: "Sistema multiagente para escritório de advocacia: WhatsApp Business API → Chatwoot → n8n, com buffer humano, prompts dinâmicos por área e ferramentas CRM para advogados.",
+      en: "Multi-agent system for a law firm: WhatsApp Business API → Chatwoot → n8n, with human message buffer, dynamic area prompts, and CRM tools for lawyers.",
+    },
+    tags: [
+      "Chatwoot",
+      "WhatsApp Business API",
+      "n8n",
+      "OpenAI",
+      "Postgres",
+      "pgvector",
+      "Google Sheets",
+      "Google Drive",
+      "ZapSign",
+      "Redis",
+      "Docker",
+      "Hetzner",
+    ],
+    image: "/projects/cohn-santos/logo.png",
+    featured: true,
+    client: {
+      name: "Cohn & Santos",
+      logo: "/projects/cohn-santos/logo.png",
+    },
+    role: {
+      pt: "Desenvolvimento e coordenação da equipe de automação · Grupo IDE",
+      en: "Development and automation team coordination · Grupo IDE",
+    },
+    duration: {
+      pt: "3 meses de desenvolvimento + 2 meses de ajustes e melhoria de qualidade",
+      en: "3 months of development + 2 months of tuning and quality improvements",
+    },
+    year: 2026,
+    challenge: {
+      pt: "O escritório Cohn & Santos precisava escalar o atendimento inicial no WhatsApp sem perder qualidade humana nem controle jurídico: clientes enviam áudios longos, documentos e imagens; casos exigem triagem por área (trabalhista, previdenciário, consumidor, entre outras); advogados humanos precisam assumir conversas já qualificadas, com contexto e documentos organizados — tudo visível no CRM junto ao atendimento da IA.",
+      en: "Cohn & Santos needed to scale initial WhatsApp support without losing human quality or legal control: clients send long audio messages, documents, and images; cases require triage by practice area (labor, social security, consumer law, and more); human lawyers must take over already qualified conversations with organized context and documents — all visible in the CRM alongside AI support.",
+    },
+    solution: {
+      pt: "Orquestrei no n8n o triângulo WhatsApp oficial → Chatwoot (CRM) → n8n: webhook recebe eventos, cadastra e atualiza leads no Postgres (já etiquetados), aplica buffer humano de mensagens e processa multimídia (transcrição, visão, PDF). Roteamento entre agente recepcionista (primeiro contato, triagem de área via switch no Postgres, base própria) e agente principal (prompt robusto por área, extraído dinamicamente de Google Sheets). Memória compartilhada entre os dois no Postgres. Tools do agente principal: alterar contexto e área no banco, acionar etiquetas via HTTP API do Chatwoot, gerar notas privadas (briefing invisível ao cliente para o advogado), buscar e associar advogado com balanceamento por área e menor carga, base vetorizada por área com busca em fontes confiáveis, integração ZapSign + Google Drive (pasta por cliente com documentos assinados e mídias). Respostas humanizadas em texto, áudio, imagem e documento. Atuei no desenvolvimento e na coordenação da equipe de automação do Grupo IDE.",
+      en: "I orchestrated in n8n the official WhatsApp → Chatwoot (CRM) → n8n triangle: webhooks receive events, register and update leads in Postgres (pre-tagged), apply a human message buffer, and process multimedia (transcription, vision, PDF). Routing between a receptionist agent (first contact, area triage via Postgres switch, own knowledge base) and a main agent (robust area-specific prompt pulled dynamically from Google Sheets). Shared memory between both in Postgres. Main agent tools: update context and area in the database, trigger labels via Chatwoot HTTP API, generate private notes (client-invisible briefings for lawyers), find and assign lawyers with load balancing by area, per-area vector knowledge base with trusted external sources, ZapSign + Google Drive integration (per-client folder with signed documents and media). Humanized replies in text, audio, image, and documents. I led development and coordinated the automation team at Grupo IDE.",
+    },
+    humanized: [
+      {
+        icon: "check",
+        title: { pt: "Confirmação de leitura", en: "Read receipts" },
+        description: {
+          pt: "Marca mensagens como visualizadas antes de responder, como em uma conversa real com o escritório.",
+          en: "Marks messages as read before replying, like a real conversation with the firm.",
+        },
+      },
+      {
+        icon: "typing",
+        title: { pt: '"Digitando…"', en: '"Typing…"' },
+        description: {
+          pt: "Exibe o indicador de digitação enquanto a IA prepara respostas empáticas e contextualizadas.",
+          en: "Shows the typing indicator while the AI prepares empathetic, contextual replies.",
+        },
+      },
+      {
+        icon: "mic",
+        title: { pt: "Gravando áudio", en: "Recording audio" },
+        description: {
+          pt: 'Mostra "gravando áudio" quando a resposta será enviada em voz — natural para clientes que preferem falar.',
+          en: 'Shows "recording audio" when the reply will be sent as voice — natural for clients who prefer speaking.',
+        },
+      },
+      {
+        icon: "image",
+        title: { pt: "Mídia na resposta", en: "Media in replies" },
+        description: {
+          pt: "A IA envia documentos, imagens e orientações quando faz sentido no atendimento jurídico inicial.",
+          en: "The AI sends documents, images, and guidance when it makes sense in initial legal support.",
+        },
+      },
+      {
+        icon: "layers",
+        title: { pt: "Bloco de contexto único", en: "Single context block" },
+        description: {
+          pt: "Várias mensagens seguidas (texto + áudio + documento) são agrupadas e interpretadas como um único contexto.",
+          en: "Multiple consecutive messages (text + audio + document) are grouped and interpreted as one context.",
+        },
+      },
+      {
+        icon: "spark",
+        title: { pt: "Tom adaptável", en: "Adaptable tone" },
+        description: {
+          pt: "Linguagem empática e adequada ao atendimento jurídico inicial — dinâmica, sem roteiro fixo de robô.",
+          en: "Empathetic language suited to initial legal support — dynamic, not a fixed robot script.",
+        },
+      },
+    ],
+    capabilities: [
+      {
+        icon: "layers",
+        title: {
+          pt: "Triângulo WhatsApp + Chatwoot + n8n",
+          en: "WhatsApp + Chatwoot + n8n triangle",
+        },
+        description: {
+          pt: "WhatsApp Business API conectado ao Chatwoot; webhook dispara o n8n — cadastro, etiquetas e controle CRM desde a entrada.",
+          en: "WhatsApp Business API connected to Chatwoot; webhook triggers n8n — registration, labels, and CRM control from the first message.",
+        },
+      },
+      {
+        icon: "memory",
+        title: { pt: "Memória compartilhada", en: "Shared memory" },
+        description: {
+          pt: "Agente recepcionista e agente principal compartilham o mesmo contexto por conversa no Postgres — transição imperceptível.",
+          en: "Receptionist and main agent share the same per-conversation context in Postgres — seamless handoff between them.",
+        },
+      },
+      {
+        icon: "map",
+        title: {
+          pt: "Recepcionista + triagem de área",
+          en: "Receptionist + area triage",
+        },
+        description: {
+          pt: "Primeiro contato identifica a área jurídica e atualiza valores no Postgres via switch — direciona ao agente principal certo.",
+          en: "First contact identifies the legal area and updates Postgres values via switch — routes to the right main agent.",
+        },
+      },
+      {
+        icon: "refresh",
+        title: {
+          pt: "Prompts dinâmicos (Google Sheets)",
+          en: "Dynamic prompts (Google Sheets)",
+        },
+        description: {
+          pt: "System prompt extraído de planilhas conforme área e estágio do caso — adaptação sem redeploy.",
+          en: "System prompt pulled from spreadsheets by area and case stage — adaptation without redeploy.",
+        },
+      },
+      {
+        icon: "search",
+        title: {
+          pt: "Base vetorizada por área",
+          en: "Per-area vector knowledge base",
+        },
+        description: {
+          pt: "Busca em pgvector por área jurídica, complementada por fontes externas confiáveis (preferencialmente governamentais).",
+          en: "pgvector search by legal area, complemented by trusted external sources (preferably government sites).",
+        },
+      },
+      {
+        icon: "bell",
+        title: {
+          pt: "Etiquetas CRM automáticas",
+          en: "Automatic CRM labels",
+        },
+        description: {
+          pt: "HTTP API do Chatwoot aplica etiquetas (área, qualificado, ia-atendimento) para o time humano filtrar e assumir casos.",
+          en: "Chatwoot HTTP API applies labels (area, qualified, ai-support) so the human team can filter and take over cases.",
+        },
+      },
+      {
+        icon: "spark",
+        title: {
+          pt: "Notas privadas (briefing)",
+          en: "Private notes (briefing)",
+        },
+        description: {
+          pt: "Relatório estruturado anexado à conversa, invisível ao cliente — advogado assume com contexto, pendências e viabilidade.",
+          en: "Structured report attached to the conversation, invisible to the client — lawyer takes over with context, pending items, and feasibility.",
+        },
+      },
+      {
+        icon: "image",
+        title: {
+          pt: "ZapSign + Drive por cliente",
+          en: "ZapSign + Drive per client",
+        },
+        description: {
+          pt: "Documentos assinados e mídias da conversa organizados automaticamente em pasta exclusiva no Google Drive, com distribuição equilibrada de advogados por área e carga.",
+          en: "Signed documents and conversation media automatically organized in a dedicated Google Drive folder, with balanced lawyer assignment by area and workload.",
+        },
+      },
+    ],
+    stack: [
+      {
+        category: { pt: "Infraestrutura", en: "Infrastructure" },
+        items: ["Hetzner", "Docker", "Swarm", "Portainer", "Traefik"],
+      },
+      {
+        category: { pt: "Automação", en: "Automation" },
+        items: ["n8n"],
+      },
+      {
+        category: {
+          pt: "Inteligência Artificial",
+          en: "Artificial Intelligence",
+        },
+        items: ["OpenAI (chat, transcrição, visão, embeddings)"],
+      },
+      {
+        category: { pt: "CRM & Canais", en: "CRM & Channels" },
+        items: ["Chatwoot", "WhatsApp Business API (oficial)"],
+      },
+      {
+        category: { pt: "APIs & Integrações", en: "APIs & Integrations" },
+        items: [
+          "HTTP Chatwoot",
+          "Google Sheets",
+          "Google Drive",
+          "ZapSign",
+        ],
+      },
+      {
+        category: { pt: "Dados", en: "Data" },
+        items: [
+          "Postgres (memória, switch de área, leads)",
+          "pgvector (KB por área)",
+          "Redis (buffer)",
+        ],
+      },
+    ],
+    results: [
+      {
+        pt: "Triagem automática por área jurídica antes do atendimento aprofundado.",
+        en: "Automatic triage by legal area before in-depth support.",
+      },
+      {
+        pt: "Dois agentes cooperando com contexto único — transição recepcionista → principal imperceptível para o cliente.",
+        en: "Two agents cooperating with shared context — receptionist → main transition imperceptible to the client.",
+      },
+      {
+        pt: "Advogados recebem conversas qualificadas com etiquetas e nota/briefing prontos no CRM.",
+        en: "Lawyers receive qualified conversations with labels and ready briefings in the CRM.",
+      },
+      {
+        pt: "Distribuição equilibrada de casos entre advogados por área de atuação e carga de atendimentos.",
+        en: "Balanced case distribution among lawyers by practice area and active workload.",
+      },
+      {
+        pt: "Documentos e mídias organizados por cliente no Drive, sem fricção para quem conversa.",
+        en: "Documents and media organized per client in Drive, with no friction for the person chatting.",
+      },
+      {
+        pt: "Atendimento contínuo, empático e multimodal — texto, áudio e documento.",
+        en: "Continuous, empathetic, multimodal support — text, audio, and documents.",
+      },
+    ],
+    flow: [
+      {
+        id: "cliente",
+        label: {
+          pt: "Cliente (WhatsApp oficial)",
+          en: "Client (Official WhatsApp)",
+        },
+        kind: "io",
+      },
+      {
+        id: "zapi",
+        label: { pt: "Chatwoot / Webhook", en: "Chatwoot / Webhook" },
+        kind: "io",
+      },
+      {
+        id: "buffer",
+        label: {
+          pt: "Buffer + cadastro (Postgres)",
+          en: "Buffer + registration (Postgres)",
+        },
+        kind: "process",
+      },
+      {
+        id: "pre",
+        label: {
+          pt: "Transcrição + Visão + PDF",
+          en: "Transcription + Vision + PDF",
+        },
+        kind: "process",
+      },
+      {
+        id: "agente",
+        label: {
+          pt: "Agente IA (recepcionista + principal)",
+          en: "AI Agent (receptionist + main)",
+        },
+        kind: "core",
+      },
+      {
+        id: "memoria",
+        label: { pt: "Memória compartilhada", en: "Shared memory" },
+        kind: "data",
+      },
+      {
+        id: "notion",
+        label: {
+          pt: "Google Sheets (prompts dinâmicos)",
+          en: "Google Sheets (dynamic prompts)",
+        },
+        kind: "io",
+      },
+      {
+        id: "sync",
+        label: {
+          pt: "Router / triagem de área",
+          en: "Router / area triage",
+        },
+        kind: "process",
+      },
+      {
+        id: "kb",
+        label: {
+          pt: "Base vetorizada por área",
+          en: "Per-area vector KB",
+        },
+        kind: "data",
+      },
+      {
+        id: "tools",
+        label: {
+          pt: "Etiqueta / nota / advogado / ZapSign",
+          en: "Label / note / lawyer / ZapSign",
+        },
+        kind: "tool",
+      },
+      {
+        id: "resposta",
+        label: { pt: "Resposta humanizada", en: "Humanized reply" },
+        kind: "io",
+      },
+    ],
+  },
+  {
     slug: "mirra-maison-atendimento-ia",
     title: {
       pt: "Atendimento IA no WhatsApp — Mirra & Maison",

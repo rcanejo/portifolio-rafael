@@ -11,3 +11,4 @@ alwaysApply: true
 - Só faça commit ou push se o usuário pedir **explicitamente na mensagem atual** (ex.: "faça o commit", "pode dar push").
 - Pode usar comandos **somente leitura** para ajudar: `git status`, `git diff`, `git log`.
 - Ao terminar alterações, informe o que mudou e lembre que os arquivos estão prontos para revisão na Source Control.
+- Durante a execução, reportar **cada passo no chat** conforme `.cursor/rules/comunicacao-execucao.mdc` (não só o resumo final).
