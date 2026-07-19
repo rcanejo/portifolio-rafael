@@ -8,6 +8,16 @@
     "cv": "Currículo",
     "whatsapp": "WhatsApp"
   },
+  "theme": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "toggle": "Alternar tema claro ou escuro"
+  },
+  "lang": {
+    "pt": "Português",
+    "en": "English",
+    "toggle": "Alternar idioma entre português e inglês"
+  },
   "hero": {
     "label": "AUTOMAÇÕES · IA · NOCODE",
     "name": "Rafael Canêjo",

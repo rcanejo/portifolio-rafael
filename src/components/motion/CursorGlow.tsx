@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 
 function canUseCursorGlow() {
+  if (typeof document !== "undefined" && document.documentElement.dataset.theme === "light") {
+    return false;
+  }
   return (
     !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
     !window.matchMedia("(pointer: coarse)").matches
@@ -27,7 +30,7 @@ export function CursorGlow() {
       className="pointer-events-none fixed inset-0 z-0"
       aria-hidden
       style={{
-        background: `radial-gradient(600px circle at ${pos.x}px ${pos.y}px, rgba(52,211,153,0.06), transparent 40%)`,
+        background: `radial-gradient(600px circle at ${pos.x}px ${pos.y}px, var(--theme-glow), transparent 40%)`,
       }}
     />
   );

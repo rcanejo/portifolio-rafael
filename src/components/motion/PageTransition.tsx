@@ -1,12 +1,28 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+
+function pathWithoutLocale(pathname: string) {
+  return pathname.replace(/^\/(pt|en)(?=\/|$)/, "") || "/";
+}
 
 export function PageTransition() {
   const pathname = usePathname();
+  const prevPath = useRef(pathname);
 
   useEffect(() => {
+    const prev = prevPath.current;
+    prevPath.current = pathname;
+
+    // Troca só de idioma (/pt ↔ /en) — não dispara cortina (evita balançar o header)
+    if (
+      pathWithoutLocale(prev) === pathWithoutLocale(pathname) &&
+      prev !== pathname
+    ) {
+      return;
+    }
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) return;
 

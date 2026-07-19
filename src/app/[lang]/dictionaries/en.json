@@ -8,6 +8,16 @@
     "cv": "Resume",
     "whatsapp": "WhatsApp"
   },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle light or dark theme"
+  },
+  "lang": {
+    "pt": "Português",
+    "en": "English",
+    "toggle": "Toggle language between Portuguese and English"
+  },
   "hero": {
     "label": "AUTOMATIONS · AI · NOCODE",
     "name": "Rafael Canêjo",

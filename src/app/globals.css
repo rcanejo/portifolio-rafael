@@ -1,16 +1,43 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0b0f0e;
-  --color-panel: #121816;
-  --color-line: #1e2724;
+  --color-ink: var(--theme-ink);
+  --color-panel: var(--theme-panel);
+  --color-line: var(--theme-line);
   --color-emerald: #34d399;
   --color-coral: #ff6b6b;
-  --color-fg: #e8eee9;
-  --color-muted: #8a9590;
+  --color-fg: var(--theme-fg);
+  --color-muted: var(--theme-muted);
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-jakarta);
   --font-mono: var(--font-jetbrains);
+}
+
+/* Tema escuro (padrão) */
+html,
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --theme-ink: #0b0f0e;
+  --theme-panel: #121816;
+  --theme-line: #1e2724;
+  --theme-fg: #e8eee9;
+  --theme-muted: #8a9590;
+  --theme-shadow: rgba(0, 0, 0, 0.35);
+  --theme-glow: rgba(52, 211, 153, 0.06);
+  --theme-grid-opacity: 35%;
+}
+
+/* Tema claro */
+html[data-theme="light"] {
+  color-scheme: light;
+  --theme-ink: #eef2ef;
+  --theme-panel: #ffffff;
+  --theme-line: #d8e0dc;
+  --theme-fg: #0b0f0e;
+  --theme-muted: #5a6560;
+  --theme-shadow: rgba(0, 0, 0, 0.08);
+  --theme-glow: rgba(52, 211, 153, 0.12);
+  --theme-grid-opacity: 55%;
 }
 
 html {
@@ -39,8 +66,8 @@ body {
 
 .grid-bg {
   background-image:
-    linear-gradient(to right, color-mix(in srgb, var(--color-line) 35%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 35%, transparent) 1px, transparent 1px);
+    linear-gradient(to right, color-mix(in srgb, var(--color-line) var(--theme-grid-opacity), transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-line) var(--theme-grid-opacity), transparent) 1px, transparent 1px);
   background-size: 96px 96px;
 }
 
@@ -86,6 +113,29 @@ body {
 
 .whatsapp-float {
   animation: whatsapp-pulse 8s ease-in-out infinite;
+}
+
+.theme-toggle,
+.pill-toggle {
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.35),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  contain: layout style;
+  flex-shrink: 0;
+}
+
+.toggle-slot {
+  contain: layout style;
+  flex-shrink: 0;
+}
+
+html[data-theme="light"] .theme-toggle,
+html[data-theme="light"] .pill-toggle {
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.22),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.35);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -140,7 +190,7 @@ body {
   border-color: color-mix(in srgb, var(--color-emerald) 55%, var(--color-line));
   box-shadow:
     0 4px 24px rgba(52, 211, 153, 0.08),
-    0 12px 40px rgba(0, 0, 0, 0.35);
+    0 12px 40px var(--theme-shadow);
 }
 
 .project-tag {

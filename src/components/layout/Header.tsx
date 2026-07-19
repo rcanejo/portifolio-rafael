@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import type { Dictionary, Locale } from "@/content/types";
 import { siteConfig } from "@/lib/site";
 import { LangSwitcher } from "./LangSwitcher";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface HeaderProps {
   lang: Locale;
@@ -61,7 +62,14 @@ export function Header({ lang, dict }: HeaderProps) {
           >
             {dict.nav.cv}
           </Link>
-          <LangSwitcher lang={lang} />
+          <div className="flex items-center gap-3">
+            <div className="toggle-slot" style={{ width: 72, height: 36 }}>
+              <LangSwitcher lang={lang} dict={dict} />
+            </div>
+            <div className="toggle-slot" style={{ width: 72, height: 36 }}>
+              <ThemeToggle dict={dict} />
+            </div>
+          </div>
           <a
             href={siteConfig.links.whatsapp(lang)}
             target="_blank"
@@ -111,8 +119,13 @@ export function Header({ lang, dict }: HeaderProps) {
                 {dict.nav.cv}
               </Link>
             </li>
-            <li className="pt-4">
-              <LangSwitcher lang={lang} />
+            <li className="pt-4 flex flex-wrap items-center gap-4">
+              <div className="toggle-slot" style={{ width: 72, height: 36 }}>
+                <LangSwitcher lang={lang} dict={dict} />
+              </div>
+              <div className="toggle-slot" style={{ width: 72, height: 36 }}>
+                <ThemeToggle dict={dict} />
+              </div>
             </li>
           </ul>
         </nav>

@@ -90,7 +90,7 @@ export function Contact({ lang, dict }: ContactProps) {
                   id="name"
                   name="name"
                   required
-                  className="mt-2 w-full rounded-lg border border-line bg-ink px-4 py-3 text-fg outline-none transition focus:border-emerald focus:ring-1 focus:ring-emerald"
+                  className="mt-2 w-full rounded-lg border border-line bg-panel px-4 py-3 text-fg outline-none transition focus:border-emerald focus:ring-1 focus:ring-emerald"
                 />
               </div>
               <div>
@@ -102,7 +102,7 @@ export function Contact({ lang, dict }: ContactProps) {
                   name="email"
                   type="email"
                   required
-                  className="mt-2 w-full rounded-lg border border-line bg-ink px-4 py-3 text-fg outline-none transition focus:border-emerald focus:ring-1 focus:ring-emerald"
+                  className="mt-2 w-full rounded-lg border border-line bg-panel px-4 py-3 text-fg outline-none transition focus:border-emerald focus:ring-1 focus:ring-emerald"
                 />
               </div>
               <div>
@@ -114,7 +114,7 @@ export function Contact({ lang, dict }: ContactProps) {
                   name="message"
                   required
                   rows={5}
-                  className="mt-2 w-full resize-none rounded-lg border border-line bg-ink px-4 py-3 text-fg outline-none transition focus:border-emerald focus:ring-1 focus:ring-emerald"
+                  className="mt-2 w-full resize-none rounded-lg border border-line bg-panel px-4 py-3 text-fg outline-none transition focus:border-emerald focus:ring-1 focus:ring-emerald"
                 />
               </div>
 

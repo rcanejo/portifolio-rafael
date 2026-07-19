@@ -4,6 +4,8 @@ import {
   Plus_Jakarta_Sans,
   Space_Grotesk,
 } from "next/font/google";
+import { ThemeScript } from "@/components/layout/ThemeScript";
+import { Providers } from "@/components/layout/Providers";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -51,10 +53,14 @@ export default function RootLayout({
   return (
     <html
       lang="pt"
+      data-theme="dark"
       className={`${spaceGrotesk.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-ink text-fg">{children}</body>
+      <body className="min-h-full bg-ink text-fg transition-colors duration-300">
+        <ThemeScript />
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

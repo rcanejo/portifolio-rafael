@@ -56,7 +56,7 @@ export function Services({ lang, dict, services }: ServicesProps) {
           {services.map((service) => (
             <StaggerItem key={service.title.pt}>
               <HoverCard>
-                <article className="group h-full rounded-lg border border-line bg-panel p-6 transition-[border-color,box-shadow] duration-500 hover:border-emerald hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+                <article className="group h-full rounded-lg border border-line bg-panel p-6 transition-[border-color,box-shadow] duration-500 hover:border-emerald hover:shadow-[0_12px_40px_var(--theme-shadow)]">
                   <ServiceIcon icon={service.icon} />
                   <h3 className="font-display mt-4 text-lg font-semibold transition-colors duration-500 group-hover:text-emerald">
                     {localize(service.title, lang)}

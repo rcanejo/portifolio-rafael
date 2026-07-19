@@ -12,14 +12,15 @@ export const projects: Project[] = [
       en: "Human-like agent that listens to audio, reads images, and replies on WhatsApp like a real person — built from scratch in 2 months.",
     },
     description: {
-      pt: "Sistema completo de atendimento profissional no WhatsApp para a Mirra & Maison: recebe texto, áudio, imagem, vídeo e documentos, com memória por conversa, base de conhecimento vetorizada e roteamento inteligente de distribuidores.",
-      en: "Full professional WhatsApp support system for Mirra & Maison: handles text, audio, images, video, and documents, with per-conversation memory, vector knowledge base, and smart distributor routing.",
+      pt: "Sistema completo de atendimento profissional no WhatsApp para a Mirra & Maison: recebe texto, áudio, imagem, vídeo e documentos, com memória por conversa, base de conhecimento vetorizada sincronizada em tempo real via Notion → Supabase, e roteamento inteligente de distribuidores.",
+      en: "Full professional WhatsApp support system for Mirra & Maison: handles text, audio, images, video, and documents, with per-conversation memory, vector knowledge base synced in real time via Notion → Supabase, and smart distributor routing.",
     },
     tags: [
       "n8n",
       "ZAPI",
       "OpenAI",
       "Supabase",
+      "Notion",
       "Redis",
       "Postgres",
       "Hetzner",
@@ -40,8 +41,8 @@ export const projects: Project[] = [
       en: "Mirra & Maison needed to scale WhatsApp support without losing human quality: multiple simultaneous customers, messages in many formats (text, audio, image, video, document), and answers that depend on technical cosmetics knowledge and a national distributor network.",
     },
     solution: {
-      pt: "Construí um agente de IA orquestrado no n8n, hospedado em infraestrutura própria (Hetzner + Docker), integrado ao WhatsApp via ZAPI. O sistema agrupa mensagens em blocos de contexto, processa áudio e imagem com OpenAI, consulta uma base vetorizada no Supabase e aciona tools para alertar humanos ou encaminhar leads a distribuidores regionais — tudo com comportamento humanizado na conversa.",
-      en: "I built an AI agent orchestrated in n8n, hosted on dedicated infrastructure (Hetzner + Docker), integrated with WhatsApp via ZAPI. The system groups messages into context blocks, processes audio and images with OpenAI, queries a vector base in Supabase, and triggers tools to alert humans or route leads to regional distributors — all with humanized conversation behavior.",
+      pt: "Construí um agente de IA orquestrado no n8n, hospedado em infraestrutura própria (Hetzner + Docker), integrado ao WhatsApp via ZAPI. O sistema agrupa mensagens em blocos de contexto, processa áudio e imagem com OpenAI, consulta uma base vetorizada no Supabase e aciona tools para alertar humanos ou encaminhar leads a distribuidores regionais — tudo com comportamento humanizado na conversa. A equipe da Mirra & Maison atualiza produtos, distribuidores e conteúdo direto no Notion; configurei a API do Notion para disparar webhooks que sincronizam o Supabase em tempo real, garantindo que a IA sempre consulte dados atualizados.",
+      en: "I built an AI agent orchestrated in n8n, hosted on dedicated infrastructure (Hetzner + Docker), integrated with WhatsApp via ZAPI. The system groups messages into context blocks, processes audio and images with OpenAI, queries a vector base in Supabase, and triggers tools to alert humans or route leads to regional distributors — all with humanized conversation behavior. The Mirra & Maison team updates products, distributors, and content directly in Notion; I configured the Notion API to fire webhooks that sync Supabase in real time, ensuring the AI always queries up-to-date data.",
     },
     humanized: [
       {
@@ -106,8 +107,16 @@ export const projects: Project[] = [
         icon: "search",
         title: { pt: "Base vetorizada + web", en: "Vector KB + web search" },
         description: {
-          pt: "Busca em base de conhecimento específica da empresa (cosméticos) no Supabase com embeddings OpenAI, complementada por pesquisas externas quando necessário.",
-          en: "Searches company-specific knowledge (cosmetics) in Supabase with OpenAI embeddings, complemented by external research when needed.",
+          pt: "Busca em base de conhecimento específica da empresa (cosméticos) no Supabase com embeddings OpenAI, alimentada em tempo real pelo Notion, complementada por pesquisas externas quando necessário.",
+          en: "Searches company-specific knowledge (cosmetics) in Supabase with OpenAI embeddings, fed in real time from Notion, complemented by external research when needed.",
+        },
+      },
+      {
+        icon: "refresh",
+        title: { pt: "Notion → Supabase em tempo real", en: "Real-time Notion → Supabase sync" },
+        description: {
+          pt: "A empresa edita produtos, distribuidores e informações no Notion; webhooks via API disparam fluxos no n8n que atualizam o Supabase automaticamente — a IA consulta sempre dados frescos, sem deploy manual.",
+          en: "The company edits products, distributors, and information in Notion; API webhooks trigger n8n flows that update Supabase automatically — the AI always queries fresh data, with no manual deploy.",
         },
       },
       {
@@ -142,11 +151,11 @@ export const projects: Project[] = [
       },
       {
         category: { pt: "APIs & Integrações", en: "APIs & Integrations" },
-        items: ["ZAPI (WhatsApp)", "HTTP Requests"],
+        items: ["ZAPI (WhatsApp)", "Notion API (webhooks)", "HTTP Requests"],
       },
       {
         category: { pt: "Dados", en: "Data" },
-        items: ["Postgres", "Supabase (pgvector)", "Redis"],
+        items: ["Postgres", "Supabase (pgvector)", "Notion (fonte editorial)", "Redis"],
       },
     ],
     results: [
@@ -161,6 +170,10 @@ export const projects: Project[] = [
       {
         pt: "Encaminhamento automático de leads qualificados ao distribuidor regional correto.",
         en: "Automatic routing of qualified leads to the correct regional distributor.",
+      },
+      {
+        pt: "Base de conhecimento sempre atualizada: alterações no Notion refletem no Supabase em tempo real para a IA.",
+        en: "Knowledge base always up to date: Notion changes reflect in Supabase in real time for the AI.",
       },
       {
         pt: "Escalonamento para humanos apenas quando as regras de negócio exigem — o restante fica com a IA.",
@@ -200,6 +213,22 @@ export const projects: Project[] = [
         id: "memoria",
         label: { pt: "Memória por conversa", en: "Per-conversation memory" },
         kind: "data",
+      },
+      {
+        id: "notion",
+        label: {
+          pt: "Notion (fonte editorial)",
+          en: "Notion (editorial source)",
+        },
+        kind: "io",
+      },
+      {
+        id: "sync",
+        label: {
+          pt: "Webhook → sync Supabase",
+          en: "Webhook → Supabase sync",
+        },
+        kind: "process",
       },
       {
         id: "kb",

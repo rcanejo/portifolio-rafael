@@ -72,6 +72,16 @@ export interface Dictionary {
     cv: string;
     whatsapp: string;
   };
+  theme: {
+    light: string;
+    dark: string;
+    toggle: string;
+  };
+  lang: {
+    pt: string;
+    en: string;
+    toggle: string;
+  };
   hero: {
     label: string;
     name: string;
