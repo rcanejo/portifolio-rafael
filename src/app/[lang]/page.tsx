@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">) {
   if (!hasLocale(lang)) return {};
 
   const titles = {
-    pt: "Rafael Canêjo — Automações & IA",
-    en: "Rafael Canêjo — Automations & AI",
+    pt: "Rafael Canêjo · Automações & IA",
+    en: "Rafael Canêjo · Automations & AI",
   };
 
   return {

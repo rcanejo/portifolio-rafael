@@ -42,7 +42,7 @@ export async function submitContact(
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    const subject = encodeURIComponent(`Contato portfólio — ${name}`);
+    const subject = encodeURIComponent(`Contato portfólio: ${name}`);
     const body = encodeURIComponent(`Nome: ${name}\nE-mail: ${email}\n\n${message}`);
     return {
       ok: true,

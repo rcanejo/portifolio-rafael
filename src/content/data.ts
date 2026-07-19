@@ -4,16 +4,16 @@ export const projects: Project[] = [
   {
     slug: "cohn-santos-atendimento-juridico-ia",
     title: {
-      pt: "Atendimento jurídico com IA — Cohn & Santos",
-      en: "AI Legal Support — Cohn & Santos",
+      pt: "Atendimento jurídico com IA, Cohn & Santos",
+      en: "AI Legal Support, Cohn & Santos",
     },
     summary: {
       pt: "Dois agentes de IA no WhatsApp oficial + CRM: triagem por área, qualificação e handoff humano com contexto completo.",
       en: "Two AI agents on official WhatsApp + CRM: area triage, qualification, and human handoff with full context.",
     },
     description: {
-      pt: "Sistema multiagente para escritório de advocacia: WhatsApp Business API → Chatwoot → n8n, com buffer humano, prompts dinâmicos por área e ferramentas CRM para advogados.",
-      en: "Multi-agent system for a law firm: WhatsApp Business API → Chatwoot → n8n, with human message buffer, dynamic area prompts, and CRM tools for lawyers.",
+      pt: "Sistema multiagente para escritório de advocacia: WhatsApp Business API, Chatwoot e n8n, com buffer humano, prompts dinâmicos por área e ferramentas CRM para advogados.",
+      en: "Multi-agent system for a law firm: WhatsApp Business API, Chatwoot, and n8n, with human message buffer, dynamic area prompts, and CRM tools for lawyers.",
     },
     tags: [
       "Chatwoot",
@@ -45,12 +45,12 @@ export const projects: Project[] = [
     },
     year: 2026,
     challenge: {
-      pt: "O escritório Cohn & Santos precisava escalar o atendimento inicial no WhatsApp sem perder qualidade humana nem controle jurídico: clientes enviam áudios longos, documentos e imagens; casos exigem triagem por área (trabalhista, previdenciário, consumidor, entre outras); advogados humanos precisam assumir conversas já qualificadas, com contexto e documentos organizados — tudo visível no CRM junto ao atendimento da IA.",
-      en: "Cohn & Santos needed to scale initial WhatsApp support without losing human quality or legal control: clients send long audio messages, documents, and images; cases require triage by practice area (labor, social security, consumer law, and more); human lawyers must take over already qualified conversations with organized context and documents — all visible in the CRM alongside AI support.",
+      pt: "O escritório Cohn & Santos precisava escalar o atendimento inicial no WhatsApp sem perder qualidade humana nem controle jurídico: clientes enviam áudios longos, documentos e imagens; casos exigem triagem por área (trabalhista, previdenciário, consumidor, entre outras); advogados humanos precisam assumir conversas já qualificadas, com contexto e documentos organizados. Tudo fica visível no CRM junto ao atendimento da IA.",
+      en: "Cohn & Santos needed to scale initial WhatsApp support without losing human quality or legal control: clients send long audio messages, documents, and images; cases require triage by practice area (labor, social security, consumer law, and more); human lawyers must take over already qualified conversations with organized context and documents. Everything stays visible in the CRM alongside AI support.",
     },
     solution: {
-      pt: "Orquestrei no n8n o triângulo WhatsApp oficial → Chatwoot (CRM) → n8n: webhook recebe eventos, cadastra e atualiza leads no Postgres (já etiquetados), aplica buffer humano de mensagens e processa multimídia (transcrição, visão, PDF). Roteamento entre agente recepcionista (primeiro contato, triagem de área via switch no Postgres, base própria) e agente principal (prompt robusto por área, extraído dinamicamente de Google Sheets). Memória compartilhada entre os dois no Postgres. Tools do agente principal: alterar contexto e área no banco, acionar etiquetas via HTTP API do Chatwoot, gerar notas privadas (briefing invisível ao cliente para o advogado), buscar e associar advogado com balanceamento por área e menor carga, base vetorizada por área com busca em fontes confiáveis, integração ZapSign + Google Drive (pasta por cliente com documentos assinados e mídias). Respostas humanizadas em texto, áudio, imagem e documento. Atuei no desenvolvimento e na coordenação da equipe de automação do Grupo IDE.",
-      en: "I orchestrated in n8n the official WhatsApp → Chatwoot (CRM) → n8n triangle: webhooks receive events, register and update leads in Postgres (pre-tagged), apply a human message buffer, and process multimedia (transcription, vision, PDF). Routing between a receptionist agent (first contact, area triage via Postgres switch, own knowledge base) and a main agent (robust area-specific prompt pulled dynamically from Google Sheets). Shared memory between both in Postgres. Main agent tools: update context and area in the database, trigger labels via Chatwoot HTTP API, generate private notes (client-invisible briefings for lawyers), find and assign lawyers with load balancing by area, per-area vector knowledge base with trusted external sources, ZapSign + Google Drive integration (per-client folder with signed documents and media). Humanized replies in text, audio, image, and documents. I led development and coordinated the automation team at Grupo IDE.",
+      pt: "Orquestrei no n8n o triângulo WhatsApp oficial, Chatwoot (CRM) e n8n: webhook recebe eventos, cadastra e atualiza leads no Postgres (já etiquetados), aplica buffer humano de mensagens e processa multimídia (transcrição, visão, PDF). Roteamento entre agente recepcionista (primeiro contato, triagem de área via switch no Postgres, base própria) e agente principal (prompt robusto por área, extraído dinamicamente de Google Sheets). Memória compartilhada entre os dois no Postgres. Tools do agente principal: alterar contexto e área no banco, acionar etiquetas via HTTP API do Chatwoot, gerar notas privadas (briefing invisível ao cliente para o advogado), buscar e associar advogado com balanceamento por área e menor carga, base vetorizada por área com busca em fontes confiáveis, integração ZapSign + Google Drive (pasta por cliente com documentos assinados e mídias). Respostas humanizadas em texto, áudio, imagem e documento. Atuei no desenvolvimento e na coordenação da equipe de automação do Grupo IDE.",
+      en: "I orchestrated in n8n the official WhatsApp, Chatwoot (CRM), and n8n triangle: webhooks receive events, register and update leads in Postgres (pre-tagged), apply a human message buffer, and process multimedia (transcription, vision, PDF). Routing between a receptionist agent (first contact, area triage via Postgres switch, own knowledge base) and a main agent (robust area-specific prompt pulled dynamically from Google Sheets). Shared memory between both in Postgres. Main agent tools: update context and area in the database, trigger labels via Chatwoot HTTP API, generate private notes (client-invisible briefings for lawyers), find and assign lawyers with load balancing by area, per-area vector knowledge base with trusted external sources, ZapSign + Google Drive integration (per-client folder with signed documents and media). Humanized replies in text, audio, image, and documents. I led development and coordinated the automation team at Grupo IDE.",
     },
     humanized: [
       {
@@ -73,8 +73,8 @@ export const projects: Project[] = [
         icon: "mic",
         title: { pt: "Gravando áudio", en: "Recording audio" },
         description: {
-          pt: 'Mostra "gravando áudio" quando a resposta será enviada em voz — natural para clientes que preferem falar.',
-          en: 'Shows "recording audio" when the reply will be sent as voice — natural for clients who prefer speaking.',
+          pt: 'Mostra "gravando áudio" quando a resposta será enviada em voz, natural para clientes que preferem falar.',
+          en: 'Shows "recording audio" when the reply will be sent as voice, natural for clients who prefer speaking.',
         },
       },
       {
@@ -97,8 +97,8 @@ export const projects: Project[] = [
         icon: "spark",
         title: { pt: "Tom adaptável", en: "Adaptable tone" },
         description: {
-          pt: "Linguagem empática e adequada ao atendimento jurídico inicial — dinâmica, sem roteiro fixo de robô.",
-          en: "Empathetic language suited to initial legal support — dynamic, not a fixed robot script.",
+          pt: "Linguagem empática e adequada ao atendimento jurídico inicial, dinâmica, sem roteiro fixo de robô.",
+          en: "Empathetic language suited to initial legal support, dynamic, not a fixed robot script.",
         },
       },
     ],
@@ -110,16 +110,16 @@ export const projects: Project[] = [
           en: "WhatsApp + Chatwoot + n8n triangle",
         },
         description: {
-          pt: "WhatsApp Business API conectado ao Chatwoot; webhook dispara o n8n — cadastro, etiquetas e controle CRM desde a entrada.",
-          en: "WhatsApp Business API connected to Chatwoot; webhook triggers n8n — registration, labels, and CRM control from the first message.",
+          pt: "WhatsApp Business API conectado ao Chatwoot; webhook dispara o n8n, cadastro, etiquetas e controle CRM desde a entrada.",
+          en: "WhatsApp Business API connected to Chatwoot; webhook triggers n8n, registration, labels, and CRM control from the first message.",
         },
       },
       {
         icon: "memory",
         title: { pt: "Memória compartilhada", en: "Shared memory" },
         description: {
-          pt: "Agente recepcionista e agente principal compartilham o mesmo contexto por conversa no Postgres — transição imperceptível.",
-          en: "Receptionist and main agent share the same per-conversation context in Postgres — seamless handoff between them.",
+          pt: "Agente recepcionista e agente principal compartilham o mesmo contexto por conversa no Postgres, transição imperceptível.",
+          en: "Receptionist and main agent share the same per-conversation context in Postgres, seamless handoff between them.",
         },
       },
       {
@@ -129,8 +129,8 @@ export const projects: Project[] = [
           en: "Receptionist + area triage",
         },
         description: {
-          pt: "Primeiro contato identifica a área jurídica e atualiza valores no Postgres via switch — direciona ao agente principal certo.",
-          en: "First contact identifies the legal area and updates Postgres values via switch — routes to the right main agent.",
+          pt: "Primeiro contato identifica a área jurídica e atualiza valores no Postgres via switch, direciona ao agente principal certo.",
+          en: "First contact identifies the legal area and updates Postgres values via switch, routes to the right main agent.",
         },
       },
       {
@@ -140,8 +140,8 @@ export const projects: Project[] = [
           en: "Dynamic prompts (Google Sheets)",
         },
         description: {
-          pt: "System prompt extraído de planilhas conforme área e estágio do caso — adaptação sem redeploy.",
-          en: "System prompt pulled from spreadsheets by area and case stage — adaptation without redeploy.",
+          pt: "System prompt extraído de planilhas conforme área e estágio do caso, adaptação sem redeploy.",
+          en: "System prompt pulled from spreadsheets by area and case stage, adaptation without redeploy.",
         },
       },
       {
@@ -173,8 +173,8 @@ export const projects: Project[] = [
           en: "Private notes (briefing)",
         },
         description: {
-          pt: "Relatório estruturado anexado à conversa, invisível ao cliente — advogado assume com contexto, pendências e viabilidade.",
-          en: "Structured report attached to the conversation, invisible to the client — lawyer takes over with context, pending items, and feasibility.",
+          pt: "Relatório estruturado anexado à conversa, invisível ao cliente. O advogado assume com contexto, pendências e viabilidade.",
+          en: "Structured report attached to the conversation, invisible to the client. The lawyer takes over with context, pending items, and feasibility.",
         },
       },
       {
@@ -233,8 +233,8 @@ export const projects: Project[] = [
         en: "Automatic triage by legal area before in-depth support.",
       },
       {
-        pt: "Dois agentes cooperando com contexto único — transição recepcionista → principal imperceptível para o cliente.",
-        en: "Two agents cooperating with shared context — receptionist → main transition imperceptible to the client.",
+        pt: "Dois agentes cooperando com contexto único. A transição do recepcionista ao principal é imperceptível para o cliente.",
+        en: "Two agents cooperating with shared context. The receptionist-to-main handoff is imperceptible to the client.",
       },
       {
         pt: "Advogados recebem conversas qualificadas com etiquetas e nota/briefing prontos no CRM.",
@@ -249,8 +249,8 @@ export const projects: Project[] = [
         en: "Documents and media organized per client in Drive, with no friction for the person chatting.",
       },
       {
-        pt: "Atendimento contínuo, empático e multimodal — texto, áudio e documento.",
-        en: "Continuous, empathetic, multimodal support — text, audio, and documents.",
+        pt: "Atendimento contínuo, empático e multimodal, texto, áudio e documento.",
+        en: "Continuous, empathetic, multimodal support, text, audio, and documents.",
       },
     ],
     flow: [
@@ -338,16 +338,16 @@ export const projects: Project[] = [
   {
     slug: "mirra-maison-atendimento-ia",
     title: {
-      pt: "Atendimento IA no WhatsApp — Mirra & Maison",
-      en: "AI WhatsApp Support — Mirra & Maison",
+      pt: "Atendimento IA no WhatsApp, Mirra & Maison",
+      en: "AI WhatsApp Support, Mirra & Maison",
     },
     summary: {
-      pt: "Agente humanizado que ouve áudio, lê imagens e responde no WhatsApp como uma pessoa real — construído do zero em 2 meses.",
-      en: "Human-like agent that listens to audio, reads images, and replies on WhatsApp like a real person — built from scratch in 2 months.",
+      pt: "Agente humanizado que ouve áudio, lê imagens e responde no WhatsApp como uma pessoa real, construído do zero em 2 meses.",
+      en: "Human-like agent that listens to audio, reads images, and replies on WhatsApp like a real person, built from scratch in 2 months.",
     },
     description: {
-      pt: "Sistema completo de atendimento profissional no WhatsApp para a Mirra & Maison: recebe texto, áudio, imagem, vídeo e documentos, com memória por conversa, base de conhecimento vetorizada sincronizada em tempo real via Notion → Supabase, e roteamento inteligente de distribuidores.",
-      en: "Full professional WhatsApp support system for Mirra & Maison: handles text, audio, images, video, and documents, with per-conversation memory, vector knowledge base synced in real time via Notion → Supabase, and smart distributor routing.",
+      pt: "Sistema completo de atendimento profissional no WhatsApp para a Mirra & Maison: recebe texto, áudio, imagem, vídeo e documentos, com memória por conversa, base de conhecimento vetorizada sincronizada em tempo real via Notion e Supabase, e roteamento inteligente de distribuidores.",
+      en: "Full professional WhatsApp support system for Mirra & Maison: handles text, audio, images, video, and documents, with per-conversation memory, vector knowledge base synced in real time via Notion and Supabase, and smart distributor routing.",
     },
     tags: [
       "n8n",
@@ -375,8 +375,8 @@ export const projects: Project[] = [
       en: "Mirra & Maison needed to scale WhatsApp support without losing human quality: multiple simultaneous customers, messages in many formats (text, audio, image, video, document), and answers that depend on technical cosmetics knowledge and a national distributor network.",
     },
     solution: {
-      pt: "Construí um agente de IA orquestrado no n8n, hospedado em infraestrutura própria (Hetzner + Docker), integrado ao WhatsApp via ZAPI. O sistema agrupa mensagens em blocos de contexto, processa áudio e imagem com OpenAI, consulta uma base vetorizada no Supabase e aciona tools para alertar humanos ou encaminhar leads a distribuidores regionais — tudo com comportamento humanizado na conversa. A equipe da Mirra & Maison atualiza produtos, distribuidores e conteúdo direto no Notion; configurei a API do Notion para disparar webhooks que sincronizam o Supabase em tempo real, garantindo que a IA sempre consulte dados atualizados.",
-      en: "I built an AI agent orchestrated in n8n, hosted on dedicated infrastructure (Hetzner + Docker), integrated with WhatsApp via ZAPI. The system groups messages into context blocks, processes audio and images with OpenAI, queries a vector base in Supabase, and triggers tools to alert humans or route leads to regional distributors — all with humanized conversation behavior. The Mirra & Maison team updates products, distributors, and content directly in Notion; I configured the Notion API to fire webhooks that sync Supabase in real time, ensuring the AI always queries up-to-date data.",
+      pt: "Construí um agente de IA orquestrado no n8n, hospedado em infraestrutura própria (Hetzner + Docker), integrado ao WhatsApp via ZAPI. O sistema agrupa mensagens em blocos de contexto, processa áudio e imagem com OpenAI, consulta uma base vetorizada no Supabase e aciona tools para alertar humanos ou encaminhar leads a distribuidores regionais, tudo com comportamento humanizado na conversa. A equipe da Mirra & Maison atualiza produtos, distribuidores e conteúdo direto no Notion; configurei a API do Notion para disparar webhooks que sincronizam o Supabase em tempo real, garantindo que a IA sempre consulte dados atualizados.",
+      en: "I built an AI agent orchestrated in n8n, hosted on dedicated infrastructure (Hetzner + Docker), integrated with WhatsApp via ZAPI. The system groups messages into context blocks, processes audio and images with OpenAI, queries a vector base in Supabase, and triggers tools to alert humans or route leads to regional distributors, all with humanized conversation behavior. The Mirra & Maison team updates products, distributors, and content directly in Notion; I configured the Notion API to fire webhooks that sync Supabase in real time, ensuring the AI always queries up-to-date data.",
     },
     humanized: [
       {
@@ -423,8 +423,8 @@ export const projects: Project[] = [
         icon: "spark",
         title: { pt: "Tom adaptável", en: "Adaptable tone" },
         description: {
-          pt: "Engenharia de prompt aplicada a situações reais — respostas dinâmicas, não roteiros fixos de robô.",
-          en: "Prompt engineering applied to real situations — dynamic replies, not fixed robot scripts.",
+          pt: "Engenharia de prompt aplicada a situações reais, respostas dinâmicas, não roteiros fixos de robô.",
+          en: "Prompt engineering applied to real situations, dynamic replies, not fixed robot scripts.",
         },
       },
     ],
@@ -447,10 +447,10 @@ export const projects: Project[] = [
       },
       {
         icon: "refresh",
-        title: { pt: "Notion → Supabase em tempo real", en: "Real-time Notion → Supabase sync" },
+        title: { pt: "Notion e Supabase em tempo real", en: "Real-time Notion and Supabase sync" },
         description: {
-          pt: "A empresa edita produtos, distribuidores e informações no Notion; webhooks via API disparam fluxos no n8n que atualizam o Supabase automaticamente — a IA consulta sempre dados frescos, sem deploy manual.",
-          en: "The company edits products, distributors, and information in Notion; API webhooks trigger n8n flows that update Supabase automatically — the AI always queries fresh data, with no manual deploy.",
+          pt: "A empresa edita produtos, distribuidores e informações no Notion; webhooks via API disparam fluxos no n8n que atualizam o Supabase automaticamente. A IA consulta sempre dados frescos, sem deploy manual.",
+          en: "The company edits products, distributors, and information in Notion; API webhooks trigger n8n flows that update Supabase automatically. The AI always queries fresh data, with no manual deploy.",
         },
       },
       {
@@ -510,8 +510,8 @@ export const projects: Project[] = [
         en: "Knowledge base always up to date: Notion changes reflect in Supabase in real time for the AI.",
       },
       {
-        pt: "Escalonamento para humanos apenas quando as regras de negócio exigem — o restante fica com a IA.",
-        en: "Escalation to humans only when business rules require it — everything else stays with the AI.",
+        pt: "Escalonamento para humanos apenas quando as regras de negócio exigem. O restante fica com a IA.",
+        en: "Escalation to humans only when business rules require it. Everything else stays with the AI.",
       },
     ],
     flow: [
@@ -559,8 +559,8 @@ export const projects: Project[] = [
       {
         id: "sync",
         label: {
-          pt: "Webhook → sync Supabase",
-          en: "Webhook → Supabase sync",
+          pt: "Webhook e sync Supabase",
+          en: "Webhook and Supabase sync",
         },
         kind: "process",
       },
@@ -645,7 +645,7 @@ export const certificates: Certificate[] = [
   {
     year: 2024,
     course: {
-      pt: "Automações com n8n — Nível Avançado",
+      pt: "Automações com n8n, Nível Avançado",
       en: "Advanced n8n Automations",
     },
     institution: "ibe.IA",

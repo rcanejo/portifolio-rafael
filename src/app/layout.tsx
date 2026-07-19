@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-rafael-eight.vercel.app",
   ),
   title: {
-    default: "Rafael Canêjo — Automações & IA",
+    default: "Rafael Canêjo · Automações & IA",
     template: "%s | Rafael Canêjo",
   },
   description:

@@ -11,7 +11,7 @@ const experience = {
     {
       role: "Desenvolvedor de Automações com IA",
       org: "Freelance / Projetos próprios",
-      period: "2023 — presente",
+      period: "2023 a presente",
       bullets: [
         "Automações n8n e Make para atendimento WhatsApp e processos internos.",
         "Integrações low-code com CRM, planilhas e APIs.",
@@ -23,7 +23,7 @@ const experience = {
     {
       role: "AI Automation Developer",
       org: "Freelance / Personal projects",
-      period: "2023 — present",
+      period: "2023 to present",
       bullets: [
         "n8n and Make automations for WhatsApp support and internal processes.",
         "Low-code integrations with CRM, spreadsheets, and APIs.",
@@ -109,7 +109,7 @@ export default function CvPage() {
         <ul className="mt-4 space-y-3">
           {certificates.slice(0, 4).map((c) => (
             <li key={c.course.pt} className="text-sm">
-              <span className="font-mono text-emerald">{c.year}</span> —{" "}
+              <span className="font-mono text-emerald">{c.year}</span>{" · "}
               <strong>{c.course[lang]}</strong>
               <span className="text-muted"> · {c.institution}</span>
             </li>

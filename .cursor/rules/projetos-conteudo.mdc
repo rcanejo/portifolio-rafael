@@ -100,6 +100,7 @@ nicho, integrações extras (Drive, ZapSign, Sheets…), metas de negócio e res
 ## Regras de escrita
 - `summary`: 1 frase de impacto para o card.
 - `description`: 1–2 frases para fallback quando não houver challenge/solution.
+- Evitar travessão (—) e setas (→) no copy público; preferir vírgula, ponto ou "e"/"para".
 - `challenge`/`solution`: narrativa real; foco no problema de negócio e na solução técnica.
 - `capabilities`: 5–8 itens; cada tool/integração relevante vira um card com ícone existente.
 - `results`: 4–6 bullets; benefícios concretos; **zero número inventado**.
