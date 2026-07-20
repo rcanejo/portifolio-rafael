@@ -168,13 +168,39 @@ body {
 }
 
 @media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
   .cv-document {
     background: #fff !important;
     color: #000 !important;
   }
+
   .cv-document * {
     color: #000 !important;
     border-color: #ccc !important;
+  }
+
+  html.cv-print-page body {
+    margin: 0;
+    padding: 0;
+  }
+
+  html.cv-print-page .cv-document {
+    min-height: auto;
+    padding: 0;
+  }
+
+  html.cv-print-page main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  html.cv-print-page .grid-bg,
+  html.cv-print-page .noise-bg {
+    display: none !important;
   }
 }
 

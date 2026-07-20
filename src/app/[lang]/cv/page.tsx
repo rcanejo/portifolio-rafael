@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useEffect } from "react";
 import type { Locale } from "@/content/types";
 import { achievement, certificates, projects, tools } from "@/content/data";
 import { siteConfig } from "@/lib/site";
@@ -16,6 +17,10 @@ const copy = {
     experience: "Experiência Profissional",
     education: "Formação",
     skills: "Habilidades",
+    computerSkills:
+      "Intimidade com informática no dia a dia: uso fluente do computador para tarefas gerais, navegação, organização e produtividade, além da prática de programar e construir sistemas. Entendimento geral facilitado de ferramentas e ambientes digitais, com digitação prática.",
+    languages: "Idiomas",
+    englishSkills: "Inglês: leitura, fala e escuta em nível médio",
     achievements: "Conquistas",
     achievementItem: "Placa 5D ibe.IA — primeiro marco de faturamento comprovado na comunidade.",
     cohnRole: "Desenvolvimento e coordenação da equipe de automação · Grupo IDE",
@@ -32,6 +37,14 @@ const copy = {
       "Base vetorizada sincronizada em tempo real via Notion e Supabase.",
       "Infra própria em Hetzner com Docker, Traefik e Redis.",
     ],
+    rivacarTitle: "Oficina Rivacar",
+    rivacarRole: "Atendimento, administração financeira e processos gerais",
+    rivacarPeriod: "Há mais de 4 anos · em atividade",
+    rivacarBullets: [
+      "Atendimento ao público e relacionamento direto com clientes.",
+      "Administração financeira e apoio aos processos operacionais da empresa.",
+      "Rotinas administrativas que somam visão prática de negócio e organização, em paralelo ao trabalho com automação e desenvolvimento.",
+    ],
     subtitle: "Desenvolvedor NoCode/LowCode · Automações com IA",
   },
   en: {
@@ -43,6 +56,10 @@ const copy = {
     experience: "Professional Experience",
     education: "Education",
     skills: "Skills",
+    computerSkills:
+      "Strong day-to-day computer fluency: comfortable with general tasks, browsing, organization, and productivity, beyond programming and building systems. Quick to grasp new tools and digital environments, with practical typing skills.",
+    languages: "Languages",
+    englishSkills: "English: reading, speaking, and listening at intermediate level",
     achievements: "Achievements",
     achievementItem: "ibe.IA 5D Plaque — first verified revenue milestone in the community.",
     cohnRole: "Development and automation team coordination · Grupo IDE",
@@ -59,6 +76,14 @@ const copy = {
       "Vector knowledge base synced in real time via Notion and Supabase.",
       "Self-hosted infrastructure on Hetzner with Docker, Traefik, and Redis.",
     ],
+    rivacarTitle: "Oficina Rivacar",
+    rivacarRole: "Customer service, financial administration, and general operations",
+    rivacarPeriod: "4+ years · ongoing",
+    rivacarBullets: [
+      "Direct customer service and day-to-day client relationships.",
+      "Financial administration and support for the company's operational processes.",
+      "Administrative routines that add practical business and organizational insight, alongside automation and development work.",
+    ],
     subtitle: "NoCode/LowCode Developer · AI Automations",
   },
 } as const;
@@ -70,6 +95,11 @@ export default function CvPage() {
 
   const cohn = projects.find((p) => p.slug === "cohn-santos-atendimento-juridico-ia");
   const mirra = projects.find((p) => p.slug === "mirra-maison-atendimento-ia");
+
+  useEffect(() => {
+    document.documentElement.classList.add("cv-print-page");
+    return () => document.documentElement.classList.remove("cv-print-page");
+  }, []);
 
   return (
     <div className="cv-document min-h-screen bg-white print:bg-white">
@@ -134,6 +164,18 @@ export default function CvPage() {
             </ul>
           </article>
         )}
+
+        <article className="mt-6">
+          <h3 className="text-base font-bold">{t.rivacarTitle}</h3>
+          <p className="text-sm">
+            {t.rivacarRole} · {t.rivacarPeriod}
+          </p>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed">
+            {t.rivacarBullets.map((b) => (
+              <li key={b}>{b}</li>
+            ))}
+          </ul>
+        </article>
       </section>
 
       <section className="mt-8">
@@ -156,6 +198,12 @@ export default function CvPage() {
         <p className="mt-2 text-sm leading-relaxed">
           {tools.map((tool) => tool.name).join(", ")}
         </p>
+        <p className="mt-3 text-sm leading-relaxed">{t.computerSkills}</p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-sm font-bold uppercase tracking-widest">{t.languages}</h2>
+        <p className="mt-2 text-sm leading-relaxed">{t.englishSkills}</p>
       </section>
 
       <section className="mt-8">
