@@ -3,155 +3,168 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import type { Locale } from "@/content/types";
-import { certificates, projects, stats, tools } from "@/content/data";
+import { achievement, certificates, projects, tools } from "@/content/data";
 import { siteConfig } from "@/lib/site";
 
-const experience = {
-  pt: [
-    {
-      role: "Desenvolvedor de Automações com IA",
-      org: "Freelance / Projetos próprios",
-      period: "2023 a presente",
-      bullets: [
-        "Automações n8n e Make para atendimento WhatsApp e processos internos.",
-        "Integrações low-code com CRM, planilhas e APIs.",
-        "MVPs com Lovable, Supabase e Cursor.",
-      ],
-    },
-  ],
-  en: [
-    {
-      role: "AI Automation Developer",
-      org: "Freelance / Personal projects",
-      period: "2023 to present",
-      bullets: [
-        "n8n and Make automations for WhatsApp support and internal processes.",
-        "Low-code integrations with CRM, spreadsheets, and APIs.",
-        "MVPs with Lovable, Supabase, and Cursor.",
-      ],
-    },
-  ],
-};
+const copy = {
+  pt: {
+    back: "Voltar ao portfólio",
+    download: "Baixar / Imprimir PDF",
+    profile: "Perfil Profissional",
+    profileText:
+      "Desenvolvedor NoCode/LowCode especializado em automações com IA. Construo agentes humanizados no WhatsApp, orquestração com n8n, integrações CRM e infraestrutura própria. Atuo na comunidade ibe.IA desde julho de 2025 e entrego projetos reais para escritórios de advocacia, e-commerce e operações internas.",
+    experience: "Experiência Profissional",
+    education: "Formação",
+    skills: "Habilidades",
+    achievements: "Conquistas",
+    achievementItem: "Placa 5D ibe.IA — primeiro marco de faturamento comprovado na comunidade.",
+    cohnRole: "Desenvolvimento e coordenação da equipe de automação · Grupo IDE",
+    cohnPeriod: "2026",
+    cohnBullets: [
+      "Dois agentes de IA no WhatsApp oficial + Chatwoot: triagem por área, qualificação e handoff humano.",
+      "Orquestração n8n com buffer humano, multimídia (transcrição, visão, PDF) e memória compartilhada no Postgres.",
+      "Tools CRM: etiquetas automáticas, notas privadas, balanceamento de advogados, pgvector por área e ZapSign + Drive.",
+    ],
+    mirraRole: "Desenvolvimento 100% do zero",
+    mirraPeriod: "2025",
+    mirraBullets: [
+      "Agente humanizado no WhatsApp (ZAPI): texto, áudio, imagem, vídeo e documento com memória por conversa.",
+      "Base vetorizada sincronizada em tempo real via Notion e Supabase.",
+      "Infra própria em Hetzner com Docker, Traefik e Redis.",
+    ],
+    subtitle: "Desenvolvedor NoCode/LowCode · Automações com IA",
+  },
+  en: {
+    back: "Back to portfolio",
+    download: "Download / Print PDF",
+    profile: "Professional Profile",
+    profileText:
+      "NoCode/LowCode developer focused on AI automations. I build human-like WhatsApp agents, n8n orchestration, CRM integrations, and self-hosted infrastructure. Active in the ibe.IA community since July 2025, delivering real projects for law firms, e-commerce, and internal operations.",
+    experience: "Professional Experience",
+    education: "Education",
+    skills: "Skills",
+    achievements: "Achievements",
+    achievementItem: "ibe.IA 5D Plaque — first verified revenue milestone in the community.",
+    cohnRole: "Development and automation team coordination · Grupo IDE",
+    cohnPeriod: "2026",
+    cohnBullets: [
+      "Two AI agents on official WhatsApp + Chatwoot: area triage, qualification, and human handoff.",
+      "n8n orchestration with human message buffer, multimedia (transcription, vision, PDF), and shared Postgres memory.",
+      "CRM tools: automatic labels, private notes, lawyer load balancing, pgvector by area, and ZapSign + Drive.",
+    ],
+    mirraRole: "Built 100% from scratch",
+    mirraPeriod: "2025",
+    mirraBullets: [
+      "Human-like WhatsApp agent (ZAPI): text, audio, image, video, and documents with per-conversation memory.",
+      "Vector knowledge base synced in real time via Notion and Supabase.",
+      "Self-hosted infrastructure on Hetzner with Docker, Traefik, and Redis.",
+    ],
+    subtitle: "NoCode/LowCode Developer · AI Automations",
+  },
+} as const;
 
 export default function CvPage() {
   const params = useParams();
   const lang = (params.lang as Locale) ?? "pt";
-  const isPt = lang === "pt";
+  const t = copy[lang];
 
-  const labels = {
-    pt: {
-      back: "Voltar ao portfólio",
-      download: "Baixar / Imprimir PDF",
-      experience: "Experiência",
-      education: "Formação",
-      skills: "Competências",
-      subtitle: "Desenvolvedor NoCode/LowCode · Automações com IA",
-    },
-    en: {
-      back: "Back to portfolio",
-      download: "Download / Print PDF",
-      experience: "Experience",
-      education: "Education",
-      skills: "Skills",
-      subtitle: "NoCode/LowCode Developer · AI Automations",
-    },
-  }[lang];
+  const cohn = projects.find((p) => p.slug === "cohn-santos-atendimento-juridico-ia");
+  const mirra = projects.find((p) => p.slug === "mirra-maison-atendimento-ia");
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-32 print:py-8">
-      <div className="no-print mb-8 flex items-center justify-between gap-4">
+    <div className="cv-document min-h-screen bg-white print:bg-white">
+      <div className="mx-auto max-w-[210mm] px-8 py-16 print:px-12 print:py-8">
+      <div className="no-print mb-8 flex items-center justify-between gap-4 border-b border-[#ccc] pb-4">
         <Link
           href={`/${lang}`}
-          className="font-mono text-xs uppercase tracking-wider text-emerald hover:underline"
+          className="font-mono text-xs uppercase tracking-wider text-[#333] hover:underline"
         >
-          ← {labels.back}
+          ← {t.back}
         </Link>
         <button
           type="button"
           onClick={() => window.print()}
-          className="rounded-lg border border-emerald px-4 py-2 font-mono text-xs uppercase tracking-wider text-emerald hover:bg-emerald hover:text-ink"
+          className="rounded border border-[#333] px-4 py-2 font-mono text-xs uppercase tracking-wider text-[#111] hover:bg-[#f0f0f0]"
         >
-          {labels.download}
+          {t.download}
         </button>
       </div>
 
-      <header className="border-b border-line pb-8">
-        <h1 className="font-display text-4xl font-bold">{siteConfig.name}</h1>
-        <p className="mt-2 font-mono text-sm text-emerald">{labels.subtitle}</p>
-        <p className="mt-4 text-sm text-muted">
-          {siteConfig.email} · {siteConfig.links.linkedin.replace("https://", "")}
+      <header className="border-b border-[#ccc] pb-6">
+        <h1 className="text-3xl font-bold tracking-tight">{siteConfig.name}</h1>
+        <p className="mt-1 text-base">{t.subtitle}</p>
+        <p className="mt-3 text-sm leading-relaxed">
+          {siteConfig.whatsappDisplay} · {siteConfig.email} ·{" "}
+          {siteConfig.links.github.replace("https://", "")}
         </p>
       </header>
 
-      <section className="mt-10">
-        <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-emerald">
-          {labels.experience}
-        </h2>
-        {experience[lang].map((item) => (
-          <div key={item.role} className="mt-6">
-            <h3 className="font-display text-lg font-semibold">{item.role}</h3>
-            <p className="font-mono text-xs text-muted">
-              {item.org} · {item.period}
+      <section className="mt-8">
+        <h2 className="text-sm font-bold uppercase tracking-widest">{t.profile}</h2>
+        <p className="mt-2 text-sm leading-relaxed">{t.profileText}</p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-sm font-bold uppercase tracking-widest">{t.experience}</h2>
+
+        {cohn && (
+          <article className="mt-4">
+            <h3 className="text-base font-bold">{cohn.title[lang]}</h3>
+            <p className="text-sm">
+              {t.cohnRole} · {t.cohnPeriod}
             </p>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-muted">
-              {item.bullets.map((b) => (
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed">
+              {t.cohnBullets.map((b) => (
                 <li key={b}>{b}</li>
               ))}
             </ul>
-          </div>
-        ))}
+          </article>
+        )}
+
+        {mirra && (
+          <article className="mt-6">
+            <h3 className="text-base font-bold">{mirra.title[lang]}</h3>
+            <p className="text-sm">
+              {t.mirraRole} · {t.mirraPeriod}
+            </p>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed">
+              {t.mirraBullets.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
+          </article>
+        )}
       </section>
 
-      <section className="mt-10">
-        <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-emerald">
-          {labels.education}
-        </h2>
-        <ul className="mt-4 space-y-3">
+      <section className="mt-8">
+        <h2 className="text-sm font-bold uppercase tracking-widest">{t.education}</h2>
+        <ul className="mt-3 space-y-3 text-sm leading-relaxed">
           {certificates.map((c) => (
-            <li key={c.course.pt} className="text-sm">
-              <span className="font-mono text-emerald">{c.year}</span>{" · "}
+            <li key={c.course.pt}>
               <strong>{c.course[lang]}</strong>
-              <span className="text-muted"> · {c.institution}</span>
+              <span> · {c.institution}</span>
+              {c.description && (
+                <p className="mt-0.5 text-[13px] leading-relaxed">{c.description[lang]}</p>
+              )}
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="mt-10">
-        <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-emerald">
-          {labels.skills}
-        </h2>
-        <p className="mt-4 font-mono text-sm leading-relaxed text-muted">
-          {tools.map((tool) => tool.name).join(" · ")}
+      <section className="mt-8">
+        <h2 className="text-sm font-bold uppercase tracking-widest">{t.skills}</h2>
+        <p className="mt-2 text-sm leading-relaxed">
+          {tools.map((tool) => tool.name).join(", ")}
         </p>
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label.pt} className="rounded border border-line p-3 text-center">
-              <p className="font-display text-2xl font-bold text-emerald">
-                {s.value}
-                {s.suffix}
-              </p>
-              <p className="font-mono text-[0.6rem] uppercase text-muted">
-                {s.label[lang]}
-              </p>
-            </div>
-          ))}
-        </div>
       </section>
 
-      <section className="mt-10 print:break-before-page">
-        <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-emerald">
-          {isPt ? "Projetos" : "Projects"}
-        </h2>
-        <ul className="mt-4 space-y-4">
-          {projects.map((p) => (
-            <li key={p.slug}>
-              <strong>{p.title[lang]}</strong>
-              <p className="text-sm text-muted">{p.summary[lang]}</p>
-            </li>
-          ))}
-        </ul>
+      <section className="mt-8">
+        <h2 className="text-sm font-bold uppercase tracking-widest">{t.achievements}</h2>
+        <p className="mt-2 text-sm leading-relaxed">
+          {t.achievementItem} {achievement.subtitle[lang]}
+        </p>
       </section>
+      </div>
     </div>
   );
 }

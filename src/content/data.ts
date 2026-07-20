@@ -594,40 +594,6 @@ export const projects: Project[] = [
       },
     ],
   },
-  {
-    slug: "automacao-processos-internos",
-    title: {
-      pt: "Automação de Processos Internos",
-      en: "Internal Process Automation",
-    },
-    summary: {
-      pt: "Orquestração de tarefas repetitivas entre planilhas, e-mail e sistemas legados.",
-      en: "Orchestration of repetitive tasks across spreadsheets, email, and legacy systems.",
-    },
-    description: {
-      pt: "Automação low-code conectando Google Sheets, Gmail e APIs internas, reduzindo trabalho manual em rotinas administrativas.",
-      en: "Low-code automation connecting Google Sheets, Gmail, and internal APIs, reducing manual work in admin routines.",
-    },
-    tags: ["Make", "Google Sheets", "APIs", "Low-code"],
-    featured: true,
-  },
-  {
-    slug: "dashboard-operacional",
-    title: {
-      pt: "Dashboard Operacional",
-      en: "Operations Dashboard",
-    },
-    summary: {
-      pt: "Painel em tempo real para acompanhar métricas de automações e atendimentos.",
-      en: "Real-time panel to track automation and support metrics.",
-    },
-    description: {
-      pt: "Interface construída com Lovable e Supabase para visualizar volume de atendimentos, SLAs e saúde dos fluxos automatizados.",
-      en: "Interface built with Lovable and Supabase to visualize support volume, SLAs, and automated flow health.",
-    },
-    tags: ["Lovable", "Supabase", "Dashboard", "No-code"],
-    featured: true,
-  },
 ];
 
 export const certificates: Certificate[] = [
@@ -648,13 +614,13 @@ export const certificates: Certificate[] = [
   {
     year: 2021,
     course: {
-      pt: "Sistemas de Informação (incompleto)",
-      en: "Information Systems (incomplete)",
+      pt: "Sistemas de Informação, 2 anos de fundamentos",
+      en: "Information Systems, 2 years of fundamentals",
     },
     institution: "Faculdade",
     description: {
-      pt: "Passei 2 anos cursando Sistemas de Informação e decidi largar por inconsistência no método de ensino e pela desvalorização daqueles que se esforçavam em entregar resultados práticos e eficazes.",
-      en: "I spent 2 years studying Information Systems and chose to leave due to inconsistencies in the teaching method and the undervaluing of those who worked hard to deliver practical, effective results.",
+      pt: "Dois anos de formação em lógica de programação, banco de dados e engenharia de software que hoje sustentam meu trabalho prático. Continuo aplicando e aprofundando esse conhecimento em projetos reais e na comunidade ibe.IA.",
+      en: "Two years of training in programming logic, databases, and software engineering that now support my hands-on work. I keep applying and deepening that foundation through real projects and the ibe.IA community.",
     },
   },
 ];

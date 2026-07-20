@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Dictionary, Locale } from "@/content/types";
 import { siteConfig } from "@/lib/site";
 
@@ -22,14 +21,6 @@ export function Footer({ lang, dict }: FooterProps) {
             WhatsApp
           </a>
           <a
-            href={siteConfig.links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-xs text-muted transition hover:-translate-y-0.5 hover:text-coral"
-          >
-            LinkedIn
-          </a>
-          <a
             href={siteConfig.links.github}
             target="_blank"
             rel="noopener noreferrer"
@@ -37,12 +28,6 @@ export function Footer({ lang, dict }: FooterProps) {
           >
             GitHub
           </a>
-          <Link
-            href={`/${lang}/cv`}
-            className="font-mono text-xs text-muted transition hover:-translate-y-0.5 hover:text-coral"
-          >
-            CV
-          </Link>
         </div>
       </div>
     </footer>

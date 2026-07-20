@@ -39,7 +39,7 @@
   },
   "projects": {
     "label": "04. PROJECTS",
-    "title": "Selected work",
+    "title": "Projects delivered",
     "viewAll": "View details"
   },
   "tools": {
@@ -66,14 +66,6 @@
     "label": "07. CONTACT",
     "title": "Let's automate something?",
     "subtitle": "Tell me your challenge. I'll reply within 24h with next steps.",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "send": "Send message",
-    "sending": "Sending…",
-    "success": "Message sent! Thank you for reaching out.",
-    "error": "Could not send. Please try again or use WhatsApp.",
-    "formSoon": "Full form coming soon. For now, we open your email client.",
     "downloadCv": "Download resume"
   },
   "footer": {

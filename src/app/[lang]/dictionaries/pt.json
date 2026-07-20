@@ -39,7 +39,7 @@
   },
   "projects": {
     "label": "04. PROJETOS",
-    "title": "Trabalhos selecionados",
+    "title": "Projetos realizados",
     "viewAll": "Ver detalhes"
   },
   "tools": {
@@ -66,14 +66,6 @@
     "label": "07. CONTATO",
     "title": "Vamos automatizar algo?",
     "subtitle": "Conte seu desafio. Respondo em até 24h com os próximos passos.",
-    "name": "Nome",
-    "email": "E-mail",
-    "message": "Mensagem",
-    "send": "Enviar mensagem",
-    "sending": "Enviando…",
-    "success": "Mensagem enviada! Obrigado pelo contato.",
-    "error": "Não foi possível enviar. Tente novamente ou use o WhatsApp.",
-    "formSoon": "Formulário completo em breve. Por enquanto, abrimos seu e-mail.",
     "downloadCv": "Baixar currículo"
   },
   "footer": {

@@ -1,13 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState, useEffect } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { submitContact, type ContactState } from "@/app/actions/contact";
+import { OrchestratorScene } from "@/components/motion/OrchestratorScene";
 import type { Dictionary, Locale } from "@/content/types";
 import { siteConfig } from "@/lib/site";
-
-const initialState: ContactState = { ok: false, message: "" };
 
 interface ContactProps {
   lang: Locale;
@@ -15,14 +12,6 @@ interface ContactProps {
 }
 
 export function Contact({ lang, dict }: ContactProps) {
-  const [state, formAction, pending] = useActionState(submitContact, initialState);
-
-  useEffect(() => {
-    if (state.useMailto && state.mailto) {
-      window.location.href = state.mailto;
-    }
-  }, [state.useMailto, state.mailto]);
-
   return (
     <section id="contato" className="scroll-mt-24 py-24">
       <div className="mx-auto max-w-6xl px-6">
@@ -52,12 +41,10 @@ export function Contact({ lang, dict }: ContactProps) {
                   WhatsApp
                 </a>
                 <a
-                  href={siteConfig.links.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`mailto:${siteConfig.email}`}
                   className="font-mono text-sm text-muted transition hover:-translate-y-0.5 hover:text-coral"
                 >
-                  LinkedIn
+                  {siteConfig.email}
                 </a>
                 <a
                   href={siteConfig.links.github}
@@ -78,60 +65,7 @@ export function Contact({ lang, dict }: ContactProps) {
           </div>
 
           <Reveal delay={0.15}>
-            <form action={formAction} className="space-y-6 rounded-lg border border-line bg-panel p-8">
-              <input type="hidden" name="lang" value={lang} />
-              <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden />
-
-              <div>
-                <label htmlFor="name" className="font-mono text-xs uppercase tracking-wider text-muted">
-                  {dict.contact.name}
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  required
-                  className="mt-2 w-full rounded-lg border border-line bg-panel px-4 py-3 text-fg outline-none transition focus:border-emerald focus:ring-1 focus:ring-emerald"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="font-mono text-xs uppercase tracking-wider text-muted">
-                  {dict.contact.email}
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="mt-2 w-full rounded-lg border border-line bg-panel px-4 py-3 text-fg outline-none transition focus:border-emerald focus:ring-1 focus:ring-emerald"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="font-mono text-xs uppercase tracking-wider text-muted">
-                  {dict.contact.message}
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  className="mt-2 w-full resize-none rounded-lg border border-line bg-panel px-4 py-3 text-fg outline-none transition focus:border-emerald focus:ring-1 focus:ring-emerald"
-                />
-              </div>
-
-              {state.message && (
-                <p className={`text-sm ${state.ok ? "text-emerald" : "text-coral"}`}>
-                  {state.message}
-                </p>
-              )}
-
-              <button
-                type="submit"
-                disabled={pending}
-                className="btn-sweep w-full rounded-lg border border-emerald px-6 py-3 font-mono text-sm uppercase tracking-wider text-emerald transition hover:text-ink disabled:opacity-50"
-              >
-                {pending ? dict.contact.sending : dict.contact.send}
-              </button>
-            </form>
+            <OrchestratorScene />
           </Reveal>
         </div>
       </div>

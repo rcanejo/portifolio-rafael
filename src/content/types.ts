@@ -171,14 +171,6 @@ export interface Dictionary {
     label: string;
     title: string;
     subtitle: string;
-    name: string;
-    email: string;
-    message: string;
-    send: string;
-    sending: string;
-    success: string;
-    error: string;
-    formSoon: string;
     downloadCv: string;
   };
   footer: {

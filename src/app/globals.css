@@ -94,9 +94,87 @@ body {
   }
 }
 
+.marquee-track-reverse {
+  animation: marquee-reverse 48s linear infinite;
+}
+
+.marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .marquee-track-reverse {
+    animation: none;
+  }
   .marquee-track {
     animation: none;
+  }
+}
+
+.orch-track {
+  animation: orch-dash 2.4s linear infinite;
+}
+
+.orch-node {
+  animation: orch-glow 3.6s ease-in-out infinite;
+}
+
+@keyframes orch-dash {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+@keyframes orch-glow {
+  0%,
+  100% {
+    fill: var(--color-panel);
+    filter: none;
+  }
+  50% {
+    fill: var(--color-emerald);
+    filter: drop-shadow(0 0 4px var(--color-emerald));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orch-track,
+  .orch-node {
+    animation: none !important;
+  }
+}
+
+/* CV — documento monocromático imprimível */
+.cv-document {
+  background: #fff;
+  color: #111;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.cv-document h1,
+.cv-document h2,
+.cv-document h3 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #111;
+}
+
+@media print {
+  .cv-document {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .cv-document * {
+    color: #000 !important;
+    border-color: #ccc !important;
   }
 }
 
