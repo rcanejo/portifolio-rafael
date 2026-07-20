@@ -49,9 +49,12 @@ export function AchievementSection({
             </div>
           </Reveal>
 
-          <Reveal delay={0.25}>
-            <Plaque3D badge={achievement.badge} institution={achievement.institution} />
-          </Reveal>
+          <div className="min-h-[420px] lg:min-h-[520px]">
+            <Plaque3D
+              badge={achievement.badge}
+              institution={achievement.institution}
+            />
+          </div>
         </div>
       </div>
     </section>

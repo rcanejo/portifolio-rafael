@@ -4,35 +4,29 @@
  * Como usar: altere os números abaixo e salve — o dev server recarrega sozinho.
  */
 export const plaqueMotion = {
-  /** Inclinação máxima em graus (maior que cards de projeto) */
-  tiltDegrees: 32,
+  /** Inclinação máxima em graus */
+  tiltDegrees: 28,
 
-  /** Perspectiva do container — menor = tilt mais dramático */
-  perspective: 900,
+  /** Perspectiva do palco — fica no elemento PAI do rotacionado */
+  perspective: 1100,
 
-  /** Profundidade das camadas internas (px, translateZ) */
-  layers: {
-    nebula: -18,
-    star: 28,
-    badge: 36,
-    brand: 22,
-    acrylic: 8,
-  },
+  /** Quanto a placa flutua no hover (px) */
+  lift: -6,
 
   /** Glow pulsante do LED na base */
   ledPulse: {
     duration: 3.2,
-    minOpacity: 0.45,
-    maxOpacity: 0.95,
+    minOpacity: 0.35,
+    maxOpacity: 0.85,
   },
 
   /** Intensidade do brilho especular que segue o mouse */
-  specularOpacity: 0.55,
+  specularOpacity: 0.45,
 
   spring: {
-    stiffness: 38,
-    damping: 6,
-    mass: 0.6,
+    stiffness: 40,
+    damping: 8,
+    mass: 0.55,
   },
 } as const;
 
