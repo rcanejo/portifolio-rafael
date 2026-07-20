@@ -2,8 +2,10 @@
   "nav": {
     "about": "About",
     "services": "Services",
+    "tools": "Tools",
     "projects": "Projects",
     "certificates": "Education",
+    "achievement": "Achievement",
     "contact": "Contact",
     "cv": "Resume",
     "whatsapp": "WhatsApp"
@@ -36,16 +38,32 @@
     "title": "What I can build for you"
   },
   "projects": {
-    "label": "03. PROJECTS",
+    "label": "04. PROJECTS",
     "title": "Selected work",
     "viewAll": "View details"
   },
+  "tools": {
+    "label": "03. TOOLS",
+    "title": "Stack I use day to day"
+  },
   "certificates": {
-    "label": "04. EDUCATION",
-    "title": "Courses & certifications"
+    "label": "05. EDUCATION",
+    "title": "Courses & certifications",
+    "durationPrefix": "Active for",
+    "yearSingular": "year",
+    "yearPlural": "years",
+    "monthSingular": "month",
+    "monthPlural": "months",
+    "and": "and",
+    "lessThanOneMonth": "Active for less than 1 month"
+  },
+  "achievement": {
+    "label": "06. ACHIEVEMENT",
+    "title": "ibe.IA 5D Plaque",
+    "contextLabel": "What it means"
   },
   "contact": {
-    "label": "05. CONTACT",
+    "label": "07. CONTACT",
     "title": "Let's automate something?",
     "subtitle": "Tell me your challenge. I'll reply within 24h with next steps.",
     "name": "Name",

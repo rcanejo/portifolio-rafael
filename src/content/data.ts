@@ -1,4 +1,11 @@
-import type { Certificate, Project, Service, Stat } from "./types";
+import type {
+  Achievement,
+  Certificate,
+  Project,
+  Service,
+  Stat,
+  Tool,
+} from "./types";
 
 export const projects: Project[] = [
   {
@@ -626,55 +633,53 @@ export const projects: Project[] = [
 export const certificates: Certificate[] = [
   {
     year: 2025,
+    since: "2025-07",
     course: {
-      pt: "Formação em Agentes IA e Automações",
-      en: "AI Agents & Automation Training",
+      pt: "Integrante, estudante e ativo na comunidade",
+      en: "Member, student, and active in the community",
     },
-    institution: "ibe.IA",
+    institution: "ibe.IA (Comunidade Sem Codar)",
     highlight: true,
+    description: {
+      pt: "Atuo profissionalmente na área de automações e IA, aplicando na prática o que aprendo na plataforma e contribuindo ativamente na comunidade desde julho de 2025.",
+      en: "I work professionally in automations and AI, applying what I learn on the platform in practice and contributing actively to the community since July 2025.",
+    },
   },
   {
-    year: 2025,
+    year: 2021,
     course: {
-      pt: "Formação em Vibe Coding",
-      en: "Vibe Coding Training",
+      pt: "Sistemas de Informação (incompleto)",
+      en: "Information Systems (incomplete)",
     },
-    institution: "ibe.IA",
-    highlight: true,
-  },
-  {
-    year: 2024,
-    course: {
-      pt: "Automações com n8n, Nível Avançado",
-      en: "Advanced n8n Automations",
+    institution: "Faculdade",
+    description: {
+      pt: "Passei 2 anos cursando Sistemas de Informação e decidi largar por inconsistência no método de ensino e pela desvalorização daqueles que se esforçavam em entregar resultados práticos e eficazes.",
+      en: "I spent 2 years studying Information Systems and chose to leave due to inconsistencies in the teaching method and the undervaluing of those who worked hard to deliver practical, effective results.",
     },
-    institution: "ibe.IA",
-  },
-  {
-    year: 2024,
-    course: {
-      pt: "Engenharia de Prompts para Negócios",
-      en: "Prompt Engineering for Business",
-    },
-    institution: "ibe.IA",
-  },
-  {
-    year: 2024,
-    course: {
-      pt: "Integrações WhatsApp Business API",
-      en: "WhatsApp Business API Integrations",
-    },
-    institution: "ibe.IA",
-  },
-  {
-    year: 2023,
-    course: {
-      pt: "Fundamentos de NoCode/LowCode",
-      en: "NoCode/LowCode Fundamentals",
-    },
-    institution: "ibe.IA",
   },
 ];
+
+export const achievement: Achievement = {
+  slug: "placa-5d-ibe-ia",
+  badge: "5D",
+  institution: "ibe.IA",
+  title: {
+    pt: "Placa 5D ibe.IA",
+    en: "ibe.IA 5D Plaque",
+  },
+  subtitle: {
+    pt: "Primeiro marco de faturamento comprovado",
+    en: "First verified revenue milestone",
+  },
+  context: {
+    pt: "A ibe.IA reconhece integrantes que comprovam faturamentos acima de 5, 6 e 7 dígitos aplicando o que aprendem na plataforma e com estudos adjacentes da mesma área. Conquistei a placa de 5 dígitos, meu primeiro passo depois de muitos projetos, madrugadas viradas e muito esforço. A meta sempre será o próximo passo.",
+    en: "ibe.IA recognizes members who prove revenue above 5, 6, and 7 figures by applying what they learn on the platform and adjacent studies in the same field. I earned the 5-figure plaque, my first step after many projects, late nights, and hard work. The goal is always the next step.",
+  },
+  story: {
+    pt: "Cada projeto entregue, cada fluxo no ar e cada cliente atendido somaram até esse reconhecimento físico. Não é só um troféu: é prova de que o caminho prático funciona quando você insiste.",
+    en: "Every delivered project, every live flow, and every client served added up to this physical recognition. It is not just a trophy: it proves the practical path works when you persist.",
+  },
+};
 
 export const services: Service[] = [
   {
@@ -735,9 +740,8 @@ export const stats: Stat[] = [
     label: { pt: "Projetos concluídos", en: "Projects completed" },
   },
   {
-    value: 6,
-    suffix: "+",
-    label: { pt: "Certificações ibe.IA", en: "ibe.IA certifications" },
+    value: 1,
+    label: { pt: "Placa 5D ibe.IA", en: "ibe.IA 5D plaque" },
   },
   {
     value: 3,
@@ -746,15 +750,26 @@ export const stats: Stat[] = [
   },
 ];
 
-export const tools = [
-  "n8n",
-  "Make",
-  "Zapier",
-  "Cursor",
-  "Claude",
-  "ChatGPT",
-  "Supabase",
-  "Lovable",
-  "WhatsApp API",
-  "ibe.IA",
+export const tools: Tool[] = [
+  { name: "n8n", icon: "n8n" },
+  { name: "Supabase", icon: "supabase" },
+  { name: "Claude", icon: "claude" },
+  { name: "OpenAI", icon: "openai" },
+  { name: "Google Drive", icon: "google-drive" },
+  { name: "Google Sheets", icon: "google-sheets" },
+  { name: "Google Calendar", icon: "google-calendar" },
+  { name: "Hetzner", icon: "hetzner" },
+  { name: "Python", icon: "python" },
+  { name: "JavaScript", icon: "javascript" },
+  { name: "Cursor", icon: "cursor" },
+  { name: "Lovable", icon: "lovable" },
+  { name: "React", icon: "react" },
+  { name: "Next.js", icon: "nextjs" },
+  { name: "TypeScript", icon: "typescript" },
+  { name: "Tailwind CSS", icon: "tailwind" },
+  { name: "HTML & CSS", icon: "html-css" },
+  { name: "Postgres", icon: "postgres" },
+  { name: "pgvector", icon: "pgvector" },
+  { name: "Termius", icon: "termius" },
+  { name: "Portainer", icon: "portainer" },
 ];

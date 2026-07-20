@@ -1,11 +1,14 @@
 import type {
+  Achievement,
   Certificate,
   Locale,
   Project,
   Service,
   Stat,
+  Tool,
 } from "@/content/types";
 import {
+  achievement as staticAchievement,
   certificates as staticCertificates,
   projects as staticProjects,
   services as staticServices,
@@ -16,7 +19,7 @@ import {
 export async function getProjects(): Promise<Project[]> {
   if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
     try {
-      const { fetchProjects } = await import("@/lib/sanity");
+      const { fetchProjects } = await import("./sanity");
       const remote = await fetchProjects();
       if (remote.length > 0) return remote;
     } catch {
@@ -34,7 +37,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | undefine
 export async function getCertificates(): Promise<Certificate[]> {
   if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
     try {
-      const { fetchCertificates } = await import("@/lib/sanity");
+      const { fetchCertificates } = await import("./sanity");
       const remote = await fetchCertificates();
       if (remote.length > 0) return remote;
     } catch {
@@ -47,7 +50,7 @@ export async function getCertificates(): Promise<Certificate[]> {
 export async function getServices(): Promise<Service[]> {
   if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
     try {
-      const { fetchServices } = await import("@/lib/sanity");
+      const { fetchServices } = await import("./sanity");
       const remote = await fetchServices();
       if (remote.length > 0) return remote;
     } catch {
@@ -60,7 +63,7 @@ export async function getServices(): Promise<Service[]> {
 export async function getStats(): Promise<Stat[]> {
   if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
     try {
-      const { fetchStats } = await import("@/lib/sanity");
+      const { fetchStats } = await import("./sanity");
       const remote = await fetchStats();
       if (remote.length > 0) return remote;
     } catch {
@@ -70,8 +73,12 @@ export async function getStats(): Promise<Stat[]> {
   return staticStats;
 }
 
-export async function getTools(): Promise<string[]> {
+export async function getTools(): Promise<Tool[]> {
   return staticTools;
+}
+
+export async function getAchievement(): Promise<Achievement> {
+  return staticAchievement;
 }
 
 export function localize<T extends Record<Locale, string>>(

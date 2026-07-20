@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="starGrad" x1="100" y1="20" x2="100" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="50%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#581c87"/>
+    </linearGradient>
+    <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#starGlow)">
+    <path d="M100 24 L118 82 L178 82 L130 118 L148 176 L100 140 L52 176 L70 118 L22 82 L82 82 Z" fill="url(#starGrad)" stroke="#e9d5ff" stroke-width="2"/>
+    <ellipse cx="100" cy="100" rx="52" ry="14" stroke="#c084fc" stroke-width="3" fill="none" transform="rotate(-18 100 100)"/>
+    <path d="M148 36 L156 24 L164 38 L178 40 L166 50 L168 64 L156 56 L144 64 L146 50 L134 40 Z" fill="#f8fafc" fill-opacity="0.95"/>
+  </g>
+</svg>

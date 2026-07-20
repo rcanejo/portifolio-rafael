@@ -48,6 +48,47 @@ export interface Certificate {
   institution: string;
   image?: string;
   highlight?: boolean;
+  description?: Localized;
+  /** ISO month, ex.: "2025-07" — usado para calcular duração dinâmica */
+  since?: string;
+}
+
+export interface Achievement {
+  slug: string;
+  title: Localized;
+  subtitle: Localized;
+  context: Localized;
+  story: Localized;
+  badge: string;
+  institution: string;
+}
+
+export type ToolIconId =
+  | "n8n"
+  | "supabase"
+  | "claude"
+  | "openai"
+  | "google-drive"
+  | "google-sheets"
+  | "google-calendar"
+  | "hetzner"
+  | "python"
+  | "javascript"
+  | "cursor"
+  | "lovable"
+  | "react"
+  | "nextjs"
+  | "typescript"
+  | "tailwind"
+  | "html-css"
+  | "postgres"
+  | "pgvector"
+  | "termius"
+  | "portainer";
+
+export interface Tool {
+  name: string;
+  icon: ToolIconId;
 }
 
 export interface Service {
@@ -66,8 +107,10 @@ export interface Dictionary {
   nav: {
     about: string;
     services: string;
+    tools: string;
     projects: string;
     certificates: string;
+    achievement: string;
     contact: string;
     cv: string;
     whatsapp: string;
@@ -104,9 +147,25 @@ export interface Dictionary {
     title: string;
     viewAll: string;
   };
+  tools: {
+    label: string;
+    title: string;
+  };
   certificates: {
     label: string;
     title: string;
+    durationPrefix: string;
+    yearSingular: string;
+    yearPlural: string;
+    monthSingular: string;
+    monthPlural: string;
+    and: string;
+    lessThanOneMonth: string;
+  };
+  achievement: {
+    label: string;
+    title: string;
+    contextLabel: string;
   };
   contact: {
     label: string;

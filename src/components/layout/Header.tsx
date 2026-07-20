@@ -15,8 +15,10 @@ interface HeaderProps {
 const navItems = [
   { key: "about" as const, href: "#sobre" },
   { key: "services" as const, href: "#servicos" },
+  { key: "tools" as const, href: "#ferramentas" },
   { key: "projects" as const, href: "#projetos" },
   { key: "certificates" as const, href: "#formacao" },
+  { key: "achievement" as const, href: "#conquista" },
   { key: "contact" as const, href: "#contato" },
 ];
 

@@ -1,13 +1,15 @@
 import { notFound } from "next/navigation";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { AchievementSection } from "@/components/sections/Achievement";
 import { Certificates } from "@/components/sections/Certificates";
 import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
 import { Services } from "@/components/sections/Services";
-import { ToolsMarquee } from "@/components/sections/ToolsMarquee";
+import { ToolsGrid } from "@/components/sections/ToolsGrid";
 import type { Locale } from "@/content/types";
 import {
+  getAchievement,
   getCertificates,
   getProjects,
   getServices,
@@ -38,7 +40,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   if (!hasLocale(lang)) notFound();
 
   const locale = lang as Locale;
-  const [dict, projects, certificates, services, stats, tools] =
+  const [dict, projects, certificates, services, stats, tools, achievement] =
     await Promise.all([
       getDictionary(locale),
       getProjects(),
@@ -46,16 +48,18 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       getServices(),
       getStats(),
       getTools(),
+      getAchievement(),
     ]);
 
   return (
     <>
       <Hero dict={dict} />
-      <ToolsMarquee tools={tools} />
       <AboutSection lang={locale} dict={dict} stats={stats} />
       <Services lang={locale} dict={dict} services={services} />
+      <ToolsGrid dict={dict} tools={tools} />
       <Projects lang={locale} dict={dict} projects={projects} />
       <Certificates lang={locale} dict={dict} certificates={certificates} />
+      <AchievementSection lang={locale} dict={dict} achievement={achievement} />
       <Contact lang={locale} dict={dict} />
     </>
   );

@@ -2,8 +2,10 @@
   "nav": {
     "about": "Sobre",
     "services": "Serviços",
+    "tools": "Ferramentas",
     "projects": "Projetos",
     "certificates": "Formação",
+    "achievement": "Conquista",
     "contact": "Contato",
     "cv": "Currículo",
     "whatsapp": "WhatsApp"
@@ -36,16 +38,32 @@
     "title": "O que posso construir para você"
   },
   "projects": {
-    "label": "03. PROJETOS",
+    "label": "04. PROJETOS",
     "title": "Trabalhos selecionados",
     "viewAll": "Ver detalhes"
   },
+  "tools": {
+    "label": "03. FERRAMENTAS",
+    "title": "Stack que utilizo no dia a dia"
+  },
   "certificates": {
-    "label": "04. FORMAÇÃO",
-    "title": "Cursos e certificações"
+    "label": "05. FORMAÇÃO",
+    "title": "Cursos e certificações",
+    "durationPrefix": "Ativo há",
+    "yearSingular": "ano",
+    "yearPlural": "anos",
+    "monthSingular": "mês",
+    "monthPlural": "meses",
+    "and": "e",
+    "lessThanOneMonth": "Ativo há menos de 1 mês"
+  },
+  "achievement": {
+    "label": "06. CONQUISTA",
+    "title": "Placa 5D ibe.IA",
+    "contextLabel": "O que significa"
   },
   "contact": {
-    "label": "05. CONTATO",
+    "label": "07. CONTATO",
     "title": "Vamos automatizar algo?",
     "subtitle": "Conte seu desafio. Respondo em até 24h com os próximos passos.",
     "name": "Nome",

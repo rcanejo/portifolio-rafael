@@ -107,7 +107,7 @@ export default function CvPage() {
           {labels.education}
         </h2>
         <ul className="mt-4 space-y-3">
-          {certificates.slice(0, 4).map((c) => (
+          {certificates.map((c) => (
             <li key={c.course.pt} className="text-sm">
               <span className="font-mono text-emerald">{c.year}</span>{" · "}
               <strong>{c.course[lang]}</strong>
@@ -122,7 +122,7 @@ export default function CvPage() {
           {labels.skills}
         </h2>
         <p className="mt-4 font-mono text-sm leading-relaxed text-muted">
-          {tools.join(" · ")}
+          {tools.map((tool) => tool.name).join(" · ")}
         </p>
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {stats.map((s) => (
